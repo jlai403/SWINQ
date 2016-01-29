@@ -126,6 +126,34 @@ class ArrayPredicatesTests: XCTestCase {
         XCTAssertEqual(TestItem(text: "Grass tastes bad"), actual[2])
         XCTAssertEqual(TestItem(text: "Grass tastes bad"), actual[3])
     }
+    
+    func test_any_Empty() {
+        // assemble
+        let array: [AnyObject] = []
+        
+        // act
+        let actual = array.any()
+        
+        // assert
+        XCTAssertFalse(actual)
+    }
+    
+    func test_any() {
+        // assemble
+        let array = [
+            "Wubba lubba dub dub",
+            "Wubba lubba dub dub",
+            "Grass tastes bad",
+            "Grass tastes bad",
+        ]
+        
+        // act
+        let actual = array.any { (x) in x == "Wubba lubba dub dub" }
+        
+        // assert
+        XCTAssertTrue(actual)
+    }
+
 }
 
 

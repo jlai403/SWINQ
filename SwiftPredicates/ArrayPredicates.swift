@@ -33,4 +33,16 @@ extension Array {
         
         return result
     }
+    
+    func any(predicate: (Element -> Bool)? = nil) -> Bool {
+        var result: Bool
+        
+        if let predicate = predicate {
+            result = self.firstOrDefault(predicate) != nil
+        } else {
+            result = !self.isEmpty
+        }
+        
+        return result
+    }
 }
