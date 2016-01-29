@@ -78,7 +78,7 @@ class ArrayPredicatesTests: XCTestCase {
             "Wubba lubba dub dub",
             "Wubba lubba dub dub",
             "Grass tastes bad",
-            "Grass tastes bad",
+            "Grass tastes bad"
         ]
         
         // act
@@ -94,7 +94,7 @@ class ArrayPredicatesTests: XCTestCase {
             "Wubba lubba dub dub",
             "Wubba lubba dub dub",
             "Grass tastes bad",
-            "Grass tastes bad",
+            "Grass tastes bad"
         ]
         
         // act
@@ -104,19 +104,77 @@ class ArrayPredicatesTests: XCTestCase {
         XCTAssertTrue(actual.isEmpty)
     }
     
+    func test_all_select() {
+        // assemble
+        let array = [
+            "Wubba lubba dub dub",
+            "Wubba lubba dub dub",
+            "Grass tastes bad",
+            "Grass tastes bad"
+        ]
+        
+        // act
+        let actual = array
+            .all{ (x) in x == "Wubba lubba dub dub" }
+            .select{ (x) in return TestItem(text: x) }  as! [TestItem]
+        
+        // assert
+        XCTAssertNotNil(actual)
+        XCTAssertEqual(2, actual.count)
+        XCTAssertEqual(TestItem(text: "Wubba lubba dub dub"), actual[0])
+        XCTAssertEqual(TestItem(text: "Wubba lubba dub dub"), actual[1])
+    }
+    
+    func test_all_select_anyPredicate() {
+        // assemble
+        let array = [
+            "Wubba lubba dub dub",
+            "Wubba lubba dub dub",
+            "Grass tastes bad",
+            "Grass tastes bad"
+        ]
+        
+        // act
+        let actual = array
+            .all{ (x) in x == "Wubba lubba dub dub" }
+            .select{ (x) in return TestItem(text: x) }
+            .any { (x) in (x as! TestItem).text == "Wubba lubba dub dub" }
+        
+        // assert
+        XCTAssertTrue(actual)
+    }
+
+    
+    func test_all_select_anyPredicate_empty() {
+        // assemble
+        let array = [
+            "Wubba lubba dub dub",
+            "Wubba lubba dub dub",
+            "Grass tastes bad",
+            "Grass tastes bad"
+        ]
+        
+        // act
+        let actual = array
+            .all{ (x) in x == "Wubba lubba dub dub" }
+            .select{ (x) in return TestItem(text: x) }
+            .any { (x) in (x as! TestItem).text == "Grass tastes bad" }
+        
+        // assert
+        XCTAssertFalse(actual)
+    }
+    
     func test_select() {
         // assemble
         let array = [
             "Wubba lubba dub dub",
             "Wubba lubba dub dub",
             "Grass tastes bad",
-            "Grass tastes bad",
+            "Grass tastes bad"
         ]
         
         // act
-        let actual = array.select { (x) in
-            return TestItem(text: x)
-        } as! [TestItem]
+        let actual = array.select { (x) in return TestItem(text: x) } as! [TestItem]
         
         // assert
         XCTAssertNotNil(actual)
@@ -127,7 +185,23 @@ class ArrayPredicatesTests: XCTestCase {
         XCTAssertEqual(TestItem(text: "Grass tastes bad"), actual[3])
     }
     
-    func test_any_Empty() {
+    func test_any() {
+        // assemble
+        let array = [
+            "Wubba lubba dub dub",
+            "Wubba lubba dub dub",
+            "Grass tastes bad",
+            "Grass tastes bad"
+        ]
+        
+        // act
+        let actual = array.any()
+        
+        // assert
+        XCTAssertTrue(actual)
+    }
+    
+    func test_any_empty() {
         // assemble
         let array: [AnyObject] = []
         
@@ -138,13 +212,13 @@ class ArrayPredicatesTests: XCTestCase {
         XCTAssertFalse(actual)
     }
     
-    func test_any() {
+    func test_any_predicate() {
         // assemble
         let array = [
             "Wubba lubba dub dub",
             "Wubba lubba dub dub",
             "Grass tastes bad",
-            "Grass tastes bad",
+            "Grass tastes bad"
         ]
         
         // act
@@ -152,6 +226,20 @@ class ArrayPredicatesTests: XCTestCase {
         
         // assert
         XCTAssertTrue(actual)
+    }
+
+    func test_any_predicate_empty() {
+        // assemble
+        let array = [
+            "Wubba lubba dub dub",
+            "Wubba lubba dub dub"
+        ]
+        
+        // act
+        let actual = array.any { (x) in x == "Grass tastes bad" }
+        
+        // assert
+        XCTAssertFalse(actual)
     }
 
 }
