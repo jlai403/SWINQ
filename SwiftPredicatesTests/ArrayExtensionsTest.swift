@@ -46,7 +46,7 @@ class ArrayExtensionsTests: XCTestCase {
     
     func test_lastIndex() {
         // assemble
-        var array = ["Wubba lubba dub dub", "Wubba lubba dub dub"]
+        let array = ["Wubba lubba dub dub", "Wubba lubba dub dub"]
         
         // act
         let actual = array.lastIndex()
@@ -57,7 +57,7 @@ class ArrayExtensionsTests: XCTestCase {
     
     func test_lastIndex_EmptyList() {
         // assemble
-        var array: [AnyObject] = []
+        let array: [AnyObject] = []
         
         // act
         let actual = array.lastIndex()
