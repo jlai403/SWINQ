@@ -23,4 +23,14 @@ extension Array {
     func all(predicate: (Element -> Bool)) -> [Element] {
         return filter(predicate)
     }
+    
+    func select(predicate: (Element -> AnyObject)) -> [AnyObject] {
+        var result: [AnyObject] = []
+        
+        for element in Array(self) {
+            result.append(predicate(element))
+        }
+        
+        return result
+    }
 }

@@ -39,8 +39,7 @@ class ArrayPredicatesTests: XCTestCase {
         
         // assert
         XCTAssertNotNil(actual)
-        XCTAssertEqual(1, actual!.num)
-        XCTAssertEqual("Wubba lubba dub dub", actual!.text)
+        XCTAssertEqual(TestItem(num: 1, text: "Wubba lubba dub dub"), actual!)
     }
     
     func test_lastOrDefault_String() {
@@ -70,8 +69,7 @@ class ArrayPredicatesTests: XCTestCase {
         
         // assert
         XCTAssertNotNil(actual)
-        XCTAssertEqual(3, actual!.num)
-        XCTAssertEqual("Wubba lubba dub dub", actual!.text)
+        XCTAssertEqual(TestItem(num: 3, text: "Wubba lubba dub dub"), actual)
     }
     
     func test_all() {
@@ -104,6 +102,29 @@ class ArrayPredicatesTests: XCTestCase {
         
         // assert
         XCTAssertTrue(actual.isEmpty)
+    }
+    
+    func test_select() {
+        // assemble
+        let array = [
+            "Wubba lubba dub dub",
+            "Wubba lubba dub dub",
+            "Grass tastes bad",
+            "Grass tastes bad",
+        ]
+        
+        // act
+        let actual = array.select { (x) in
+            return TestItem(text: x)
+        } as! [TestItem]
+        
+        // assert
+        XCTAssertNotNil(actual)
+        XCTAssertEqual(4, actual.count)
+        XCTAssertEqual(TestItem(text: "Wubba lubba dub dub"), actual[0])
+        XCTAssertEqual(TestItem(text: "Wubba lubba dub dub"), actual[1])
+        XCTAssertEqual(TestItem(text: "Grass tastes bad"), actual[2])
+        XCTAssertEqual(TestItem(text: "Grass tastes bad"), actual[3])
     }
 }
 

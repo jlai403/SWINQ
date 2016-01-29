@@ -43,4 +43,26 @@ class ArrayExtensionsTests: XCTestCase {
         // assert
         XCTAssertTrue(array.isEmpty)
     }
+    
+    func test_lastIndex() {
+        // assemble
+        var array = ["Wubba lubba dub dub", "Wubba lubba dub dub"]
+        
+        // act
+        let actual = array.lastIndex()
+        
+        // assert
+        XCTAssertEqual(1, actual)
+    }
+    
+    func test_lastIndex_EmptyList() {
+        // assemble
+        var array: [AnyObject] = []
+        
+        // act
+        let actual = array.lastIndex()
+        
+        // assert
+        XCTAssertEqual(-1, actual)
+    }
 }
