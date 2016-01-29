@@ -19,4 +19,8 @@ extension Array {
         }
         return result
     }
+    
+    func all(predicate: (Element -> Bool)) -> [Element] {
+        return filter(predicate)
+    }
 }

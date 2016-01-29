@@ -73,6 +73,38 @@ class ArrayPredicatesTests: XCTestCase {
         XCTAssertEqual(3, actual!.num)
         XCTAssertEqual("Wubba lubba dub dub", actual!.text)
     }
+    
+    func test_all() {
+        // assemble
+        let array = [
+            "Wubba lubba dub dub",
+            "Wubba lubba dub dub",
+            "Grass tastes bad",
+            "Grass tastes bad",
+        ]
+        
+        // act
+        let actual = array.all { (x) in x == "Wubba lubba dub dub" }
+        
+        // assert
+        XCTAssertEqual(2, actual.count)
+    }
+    
+    func test_all_emptyList() {
+        // assemble
+        let array = [
+            "Wubba lubba dub dub",
+            "Wubba lubba dub dub",
+            "Grass tastes bad",
+            "Grass tastes bad",
+        ]
+        
+        // act
+        let actual = array.all { (x) in x == "Nothing" }
+        
+        // assert
+        XCTAssertTrue(actual.isEmpty)
+    }
 }
 
 
