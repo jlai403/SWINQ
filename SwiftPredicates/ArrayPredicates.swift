@@ -2,8 +2,8 @@ import Foundation
 
 extension Array {
     
-    func firstOrDefault(predicate: (Element -> Bool)) -> Element? {
-        var result: Element?
+    func firstOrDefault(defaultValue: Element? = nil, predicate: (Element -> Bool)) -> Element? {
+        var result = defaultValue
         let filteredList = filter(predicate)
         if let first = filteredList.first {
             result = first
@@ -11,8 +11,8 @@ extension Array {
         return result
     }
     
-    func lastOrDefault(predicate: (Element -> Bool)) -> Element? {
-        var result: Element?
+    func lastOrDefault(defaultValue: Element? = nil, predicate: (Element -> Bool)) -> Element? {
+        var result = defaultValue
         let filteredList = filter(predicate)
         if let last = filteredList.last {
             result = last
@@ -38,7 +38,7 @@ extension Array {
         var result: Bool
         
         if let predicate = predicate {
-            result = self.firstOrDefault(predicate) != nil
+            result = self.firstOrDefault(predicate: predicate) != nil
         } else {
             result = !self.isEmpty
         }

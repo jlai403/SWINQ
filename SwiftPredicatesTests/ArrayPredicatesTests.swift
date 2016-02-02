@@ -42,6 +42,25 @@ class ArrayPredicatesTests: XCTestCase {
         XCTAssertEqual(TestItem(num: 1, text: "Wubba lubba dub dub"), actual!)
     }
     
+    func test_firstOrDefault_Default() {
+        // assemble
+        let array = [
+            TestItem(num: 1, text: "Wubba lubba dub dub"),
+            TestItem(num: 2, text: "Wubba lubba dub dub"),
+            TestItem(num: 3, text: "Wubba lubba dub dub"),
+            TestItem(num: 4, text: "Grass tastes bad")
+        ]
+        
+        let defaultValue = TestItem(text: "Default value")
+        
+        // act
+        let actual = array.firstOrDefault(defaultValue){ (ti) in ti.text == "Nothing" }
+        
+        // assert
+        XCTAssertNotNil(actual)
+        XCTAssertEqual(defaultValue, actual!)
+    }
+    
     func test_lastOrDefault_String() {
         // assemble
         let expected = "Wubba lubba dub dub"
@@ -70,6 +89,25 @@ class ArrayPredicatesTests: XCTestCase {
         // assert
         XCTAssertNotNil(actual)
         XCTAssertEqual(TestItem(num: 3, text: "Wubba lubba dub dub"), actual)
+    }
+    
+    func test_lastOrDefault_Default() {
+        // assemble
+        let array = [
+            TestItem(num: 1, text: "Wubba lubba dub dub"),
+            TestItem(num: 2, text: "Wubba lubba dub dub"),
+            TestItem(num: 3, text: "Wubba lubba dub dub"),
+            TestItem(num: 4, text: "Grass tastes bad")
+        ]
+        
+        let defaultValue = TestItem(text: "Default value")
+        
+        // act
+        let actual = array.lastOrDefault(defaultValue){ (ti) in ti.text == "Nothing" }
+        
+        // assert
+        XCTAssertNotNil(actual)
+        XCTAssertEqual(defaultValue, actual!)
     }
     
     func test_all() {
