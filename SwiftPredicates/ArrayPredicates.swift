@@ -44,6 +44,20 @@ extension Array {
         }
         
         return result
+    }
+    
+    func toArray() -> [Element] {
+        let copy = self
+        return copy
+    }
+    
+    func toDictionary<Key: Hashable, Value>(predicate: (Element)->(key: Key, value: Value)) -> [Key: Value] {
+        let dictionary = [Key: Value]()
         
+        return self.reduce(dictionary) { (var dictionary, element) in
+            let keyPair = predicate(element)
+            dictionary[keyPair.key] = keyPair.value
+            return dictionary
+        }
     }
 }

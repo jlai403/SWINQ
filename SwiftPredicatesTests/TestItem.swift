@@ -12,7 +12,7 @@ class TestItem: Equatable {
     
     convenience init(num: Int, text: String) {
         self.init(text: text)
-        self.text = text
+        self.num = num
     }
 }
 

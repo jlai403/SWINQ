@@ -280,6 +280,44 @@ class ArrayPredicatesTests: XCTestCase {
         XCTAssertFalse(actual)
     }
 
+    func test_toArray() {
+        let original = [
+            "Wubba lubba dub dub",
+            "Wubba lubba dub dub"
+        ]
+        
+        // act
+        var copy = original.toArray()
+        copy.append("Grass tastes bad")
+        
+        // assert
+        XCTAssertNotEqual(original, copy)
+        XCTAssertEqual(3, copy.count)
+        XCTAssertEqual(2, original.count)
+    }
+    
+    func test_toDictionary() {
+        // assemble
+        let firstTestItem = TestItem(num: 1, text: "Wubba lubba dub dub")
+        let secondTestItem = TestItem(num: 2, text: "Wubba lubba dub dub")
+        let thirdTestItem = TestItem(num: 3, text: "Wubba lubba dub dub")
+        let fourthTestItem = TestItem(num: 4, text: "Grass tastes bad")
+        
+        let array = [firstTestItem, secondTestItem, thirdTestItem, fourthTestItem]
+        
+        // act
+        let dictionary = array.toDictionary { (ti) in
+            return (key: ti.num, value: ti)
+        }
+        
+        // assert
+        XCTAssertNotNil(dictionary)
+        XCTAssertEqual(4, dictionary.count)
+        XCTAssertEqual(dictionary[1], firstTestItem)
+        XCTAssertEqual(dictionary[2], secondTestItem)
+        XCTAssertEqual(dictionary[3], thirdTestItem)
+        XCTAssertEqual(dictionary[4], fourthTestItem)
+    }
 }
 
 
