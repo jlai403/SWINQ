@@ -154,7 +154,7 @@ class ArrayPredicatesTests: XCTestCase {
         // act
         let actual = array
             .all{ (x) in x == "Wubba lubba dub dub" }
-            .select{ (x) in return TestItem(text: x) }  as! [TestItem]
+            .select{ (x) in return TestItem(text: x) }
         
         // assert
         XCTAssertNotNil(actual)
@@ -163,7 +163,7 @@ class ArrayPredicatesTests: XCTestCase {
         XCTAssertEqual(TestItem(text: "Wubba lubba dub dub"), actual[1])
     }
     
-    func test_all_select_anyPredicate() {
+    func test_all_select_anyChain() {
         // assemble
         let array = [
             "Wubba lubba dub dub",
@@ -176,14 +176,14 @@ class ArrayPredicatesTests: XCTestCase {
         let actual = array
             .all{ (x) in x == "Wubba lubba dub dub" }
             .select{ (x) in return TestItem(text: x) }
-            .any { (x) in (x as! TestItem).text == "Wubba lubba dub dub" }
+            .any { (x) in x.text == "Wubba lubba dub dub" }
         
         // assert
         XCTAssertTrue(actual)
     }
 
     
-    func test_all_select_anyPredicate_empty() {
+    func test_all_select_anyChain_empty() {
         // assemble
         let array = [
             "Wubba lubba dub dub",
@@ -196,7 +196,7 @@ class ArrayPredicatesTests: XCTestCase {
         let actual = array
             .all{ (x) in x == "Wubba lubba dub dub" }
             .select{ (x) in return TestItem(text: x) }
-            .any { (x) in (x as! TestItem).text == "Grass tastes bad" }
+            .any { (x) in x.text == "Grass tastes bad" }
         
         // assert
         XCTAssertFalse(actual)
@@ -212,7 +212,7 @@ class ArrayPredicatesTests: XCTestCase {
         ]
         
         // act
-        let actual = array.select { (x) in return TestItem(text: x) } as! [TestItem]
+        let actual = array.select { (x) in return TestItem(text: x) }
         
         // assert
         XCTAssertNotNil(actual)

@@ -24,7 +24,7 @@ extension Array {
         return filter(predicate)
     }
     
-    func select(predicate: (Element -> AnyObject)) -> [AnyObject] {
+    func select<T>(predicate: (Element -> T)) -> [T] {
         return self.map({ (element) in
             predicate(element)
         })
