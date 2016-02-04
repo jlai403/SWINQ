@@ -25,13 +25,9 @@ extension Array {
     }
     
     func select(predicate: (Element -> AnyObject)) -> [AnyObject] {
-        var result: [AnyObject] = []
-        
-        for element in Array(self) {
-            result.append(predicate(element))
-        }
-        
-        return result
+        return self.map({ (element) in
+            predicate(element)
+        })
     }
     
     func any(predicate: (Element -> Bool)? = nil) -> Bool {
