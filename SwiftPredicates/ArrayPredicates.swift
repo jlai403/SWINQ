@@ -30,6 +30,15 @@ extension Array {
         })
     }
     
+    func selectMany<T>(predicate: (Element -> [T])) -> [T] {
+        let array = [T]()
+
+        return self.reduce(array) { (var array, element) in
+            array.appendContentsOf(predicate(element))
+            return array
+        }
+    }
+    
     func any(predicate: (Element -> Bool)? = nil) -> Bool {
         var result: Bool
         

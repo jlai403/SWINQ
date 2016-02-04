@@ -223,6 +223,31 @@ class ArrayPredicatesTests: XCTestCase {
         XCTAssertEqual(TestItem(text: "Grass tastes bad"), actual[3])
     }
     
+    func test_selectMany() {
+        // assemble
+        let array = [
+            TestItem(array: "one", "two", "three"),
+            TestItem(array: "four", "five", "six"),
+            TestItem(array: "seven", "eight", "nine")
+        ]
+        
+        // act
+        let actual = array.selectMany { (x) in x.array }
+        
+        // assert
+        XCTAssertNotNil(actual)
+        XCTAssertEqual(9, actual.count)
+        XCTAssertEqual("one", actual[0])
+        XCTAssertEqual("two", actual[1])
+        XCTAssertEqual("three", actual[2])
+        XCTAssertEqual("four", actual[3])
+        XCTAssertEqual("five", actual[4])
+        XCTAssertEqual("six", actual[5])
+        XCTAssertEqual("seven", actual[6])
+        XCTAssertEqual("eight", actual[7])
+        XCTAssertEqual("nine", actual[8])
+    }
+    
     func test_any() {
         // assemble
         let array = [
