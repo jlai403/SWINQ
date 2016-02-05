@@ -343,6 +343,42 @@ class ArrayPredicatesTests: XCTestCase {
         XCTAssertEqual(dictionary[3], thirdTestItem)
         XCTAssertEqual(dictionary[4], fourthTestItem)
     }
+    
+    func test_take() {
+        // assemble
+        let firstTestItem = TestItem(num: 1, text: "Wubba lubba dub dub")
+        let secondTestItem = TestItem(num: 2, text: "Wubba lubba dub dub")
+        let thirdTestItem = TestItem(num: 3, text: "Wubba lubba dub dub")
+        let fourthTestItem = TestItem(num: 4, text: "Grass tastes bad")
+        
+        let array = [firstTestItem, secondTestItem, thirdTestItem, fourthTestItem]
+        
+        // act
+        let actual = array.take(2)
+        
+        // assert
+        XCTAssertNotNil(actual)
+        XCTAssertEqual(2, actual.count)
+        XCTAssertEqual(actual[0], firstTestItem)
+        XCTAssertEqual(actual[1], secondTestItem)
+    }
+    
+    func test_takeWhile() {
+        // assemble
+        let array = [1, 2, 3, 4, 3, 2, 1]
+        
+        // act
+        let actual = array.takeWhile { (x) in
+            x < 4
+        }
+        
+        // assert
+        XCTAssertNotNil(actual)
+        XCTAssertEqual(3, actual.count)
+        XCTAssertEqual(actual[0], 1)
+        XCTAssertEqual(actual[1], 2)
+        XCTAssertEqual(actual[2], 3)
+    }
 }
 
 

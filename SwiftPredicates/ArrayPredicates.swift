@@ -65,4 +65,26 @@ extension Array {
             return dictionary
         }
     }
+    
+    func take(count: Int) -> [Element] {
+        var array = [Element]()
+        
+        for (index, element) in self.enumerate() {
+            if (index >= count) { break }
+            array.append(element)
+        }
+        
+        return array
+    }
+    
+    func takeWhile(predicate: (Element -> Bool)) -> [Element] {
+        var array = [Element]()
+        
+        for element in self {
+            if (!predicate(element)) { break }
+            array.append(element)
+        }
+        
+        return array
+    }
 }
