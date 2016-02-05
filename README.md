@@ -1,2 +1,2 @@
-# SwiftPredicates
-Integrated queries on commonly used Swift data structures such as Arrays and Dictionaries.
+# SWING
+Swift integrated queries on commonly used Swift data structures such as Arrays and Dictionaries.
