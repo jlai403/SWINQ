@@ -1,6 +1,6 @@
 
 import XCTest
-@testable import SwiftPredicates
+@testable import SWINQ
 
 class ArrayPredicatesTests: XCTestCase {
     
