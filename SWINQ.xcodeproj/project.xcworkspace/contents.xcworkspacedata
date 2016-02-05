@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:SwiftPredicates.xcodeproj">
+      location = "self:/Users/jlai/Developer/Xcode/SwiftPredicates/SWINQ.xcodeproj">
    </FileRef>
 </Workspace>

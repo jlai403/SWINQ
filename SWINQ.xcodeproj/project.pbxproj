@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6C676B7F1C5BB2FA00F0C0A9 /* SwiftPredicates.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C676B7E1C5BB2FA00F0C0A9 /* SwiftPredicates.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6C676B861C5BB2FB00F0C0A9 /* SwiftPredicates.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C676B7B1C5BB2FA00F0C0A9 /* SwiftPredicates.framework */; };
+		6C676B861C5BB2FB00F0C0A9 /* SWINQ.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C676B7B1C5BB2FA00F0C0A9 /* SWINQ.framework */; };
 		6C676B8B1C5BB2FB00F0C0A9 /* ArrayPredicatesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C676B8A1C5BB2FB00F0C0A9 /* ArrayPredicatesTests.swift */; };
 		6C676B961C5BB45300F0C0A9 /* ArrayPredicates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C676B951C5BB45300F0C0A9 /* ArrayPredicates.swift */; };
 		6C676B981C5BB66A00F0C0A9 /* TestItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C676B971C5BB66A00F0C0A9 /* TestItem.swift */; };
@@ -27,10 +27,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6C676B7B1C5BB2FA00F0C0A9 /* SwiftPredicates.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftPredicates.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C676B7B1C5BB2FA00F0C0A9 /* SWINQ.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SWINQ.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C676B7E1C5BB2FA00F0C0A9 /* SwiftPredicates.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftPredicates.h; sourceTree = "<group>"; };
 		6C676B801C5BB2FA00F0C0A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6C676B851C5BB2FB00F0C0A9 /* SwiftPredicatesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftPredicatesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C676B851C5BB2FB00F0C0A9 /* SWINQ.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SWINQ.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C676B8A1C5BB2FB00F0C0A9 /* ArrayPredicatesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayPredicatesTests.swift; sourceTree = "<group>"; };
 		6C676B8C1C5BB2FB00F0C0A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6C676B951C5BB45300F0C0A9 /* ArrayPredicates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayPredicates.swift; sourceTree = "<group>"; };
@@ -51,7 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6C676B861C5BB2FB00F0C0A9 /* SwiftPredicates.framework in Frameworks */,
+				6C676B861C5BB2FB00F0C0A9 /* SWINQ.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,8 +61,8 @@
 		6C676B711C5BB2FA00F0C0A9 = {
 			isa = PBXGroup;
 			children = (
-				6C676B7D1C5BB2FA00F0C0A9 /* SwiftPredicates */,
-				6C676B891C5BB2FB00F0C0A9 /* SwiftPredicatesTests */,
+				6C676B7D1C5BB2FA00F0C0A9 /* SWINQ */,
+				6C676B891C5BB2FB00F0C0A9 /* SWINQTests */,
 				6C676B7C1C5BB2FA00F0C0A9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -70,13 +70,13 @@
 		6C676B7C1C5BB2FA00F0C0A9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6C676B7B1C5BB2FA00F0C0A9 /* SwiftPredicates.framework */,
-				6C676B851C5BB2FB00F0C0A9 /* SwiftPredicatesTests.xctest */,
+				6C676B7B1C5BB2FA00F0C0A9 /* SWINQ.framework */,
+				6C676B851C5BB2FB00F0C0A9 /* SWINQ.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		6C676B7D1C5BB2FA00F0C0A9 /* SwiftPredicates */ = {
+		6C676B7D1C5BB2FA00F0C0A9 /* SWINQ */ = {
 			isa = PBXGroup;
 			children = (
 				6C676B7E1C5BB2FA00F0C0A9 /* SwiftPredicates.h */,
@@ -84,10 +84,11 @@
 				6C676B991C5BB95000F0C0A9 /* ArrayExtensions.swift */,
 				6C676B951C5BB45300F0C0A9 /* ArrayPredicates.swift */,
 			);
+			name = SWINQ;
 			path = SwiftPredicates;
 			sourceTree = "<group>";
 		};
-		6C676B891C5BB2FB00F0C0A9 /* SwiftPredicatesTests */ = {
+		6C676B891C5BB2FB00F0C0A9 /* SWINQTests */ = {
 			isa = PBXGroup;
 			children = (
 				6C676B971C5BB66A00F0C0A9 /* TestItem.swift */,
@@ -95,6 +96,7 @@
 				6C676B8A1C5BB2FB00F0C0A9 /* ArrayPredicatesTests.swift */,
 				6C676B8C1C5BB2FB00F0C0A9 /* Info.plist */,
 			);
+			name = SWINQTests;
 			path = SwiftPredicatesTests;
 			sourceTree = "<group>";
 		};
@@ -112,9 +114,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		6C676B7A1C5BB2FA00F0C0A9 /* SwiftPredicates */ = {
+		6C676B7A1C5BB2FA00F0C0A9 /* SWINQ */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6C676B8F1C5BB2FB00F0C0A9 /* Build configuration list for PBXNativeTarget "SwiftPredicates" */;
+			buildConfigurationList = 6C676B8F1C5BB2FB00F0C0A9 /* Build configuration list for PBXNativeTarget "SWINQ" */;
 			buildPhases = (
 				6C676B761C5BB2FA00F0C0A9 /* Sources */,
 				6C676B771C5BB2FA00F0C0A9 /* Frameworks */,
@@ -125,14 +127,14 @@
 			);
 			dependencies = (
 			);
-			name = SwiftPredicates;
+			name = SWINQ;
 			productName = SwiftPredicates;
-			productReference = 6C676B7B1C5BB2FA00F0C0A9 /* SwiftPredicates.framework */;
+			productReference = 6C676B7B1C5BB2FA00F0C0A9 /* SWINQ.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		6C676B841C5BB2FB00F0C0A9 /* SwiftPredicatesTests */ = {
+		6C676B841C5BB2FB00F0C0A9 /* SWINQTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6C676B921C5BB2FB00F0C0A9 /* Build configuration list for PBXNativeTarget "SwiftPredicatesTests" */;
+			buildConfigurationList = 6C676B921C5BB2FB00F0C0A9 /* Build configuration list for PBXNativeTarget "SWINQTests" */;
 			buildPhases = (
 				6C676B811C5BB2FB00F0C0A9 /* Sources */,
 				6C676B821C5BB2FB00F0C0A9 /* Frameworks */,
@@ -143,9 +145,9 @@
 			dependencies = (
 				6C676B881C5BB2FB00F0C0A9 /* PBXTargetDependency */,
 			);
-			name = SwiftPredicatesTests;
+			name = SWINQTests;
 			productName = SwiftPredicatesTests;
-			productReference = 6C676B851C5BB2FB00F0C0A9 /* SwiftPredicatesTests.xctest */;
+			productReference = 6C676B851C5BB2FB00F0C0A9 /* SWINQ.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -166,7 +168,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 6C676B751C5BB2FA00F0C0A9 /* Build configuration list for PBXProject "SwiftPredicates" */;
+			buildConfigurationList = 6C676B751C5BB2FA00F0C0A9 /* Build configuration list for PBXProject "SWINQ" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -178,8 +180,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6C676B7A1C5BB2FA00F0C0A9 /* SwiftPredicates */,
-				6C676B841C5BB2FB00F0C0A9 /* SwiftPredicatesTests */,
+				6C676B7A1C5BB2FA00F0C0A9 /* SWINQ */,
+				6C676B841C5BB2FB00F0C0A9 /* SWINQTests */,
 			);
 		};
 /* End PBXProject section */
@@ -226,7 +228,7 @@
 /* Begin PBXTargetDependency section */
 		6C676B881C5BB2FB00F0C0A9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6C676B7A1C5BB2FA00F0C0A9 /* SwiftPredicates */;
+			target = 6C676B7A1C5BB2FA00F0C0A9 /* SWINQ */;
 			targetProxy = 6C676B871C5BB2FB00F0C0A9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -333,7 +335,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ca.jlai.SwiftPredicates;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SWINQ;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -351,7 +353,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ca.jlai.SwiftPredicates;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SWINQ;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -362,7 +364,7 @@
 				INFOPLIST_FILE = SwiftPredicatesTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ca.jlai.SwiftPredicatesTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SWINQ;
 			};
 			name = Debug;
 		};
@@ -372,14 +374,14 @@
 				INFOPLIST_FILE = SwiftPredicatesTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ca.jlai.SwiftPredicatesTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SWINQ;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6C676B751C5BB2FA00F0C0A9 /* Build configuration list for PBXProject "SwiftPredicates" */ = {
+		6C676B751C5BB2FA00F0C0A9 /* Build configuration list for PBXProject "SWINQ" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6C676B8D1C5BB2FB00F0C0A9 /* Debug */,
@@ -388,7 +390,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6C676B8F1C5BB2FB00F0C0A9 /* Build configuration list for PBXNativeTarget "SwiftPredicates" */ = {
+		6C676B8F1C5BB2FB00F0C0A9 /* Build configuration list for PBXNativeTarget "SWINQ" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6C676B901C5BB2FB00F0C0A9 /* Debug */,
@@ -397,7 +399,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6C676B921C5BB2FB00F0C0A9 /* Build configuration list for PBXNativeTarget "SwiftPredicatesTests" */ = {
+		6C676B921C5BB2FB00F0C0A9 /* Build configuration list for PBXNativeTarget "SWINQTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6C676B931C5BB2FB00F0C0A9 /* Debug */,

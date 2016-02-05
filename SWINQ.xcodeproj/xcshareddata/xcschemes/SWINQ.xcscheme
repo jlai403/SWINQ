@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "6C676B7A1C5BB2FA00F0C0A9"
-               BuildableName = "SwiftPredicates.framework"
-               BlueprintName = "SwiftPredicates"
-               ReferencedContainer = "container:SwiftPredicates.xcodeproj">
+               BuildableName = "SWINQ.framework"
+               BlueprintName = "SWINQ"
+               ReferencedContainer = "container:SWINQ.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "6C676B841C5BB2FB00F0C0A9"
-               BuildableName = "SwiftPredicatesTests.xctest"
-               BlueprintName = "SwiftPredicatesTests"
-               ReferencedContainer = "container:SwiftPredicates.xcodeproj">
+               BuildableName = "SWINQ.xctest"
+               BlueprintName = "SWINQTests"
+               ReferencedContainer = "container:SWINQ.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6C676B7A1C5BB2FA00F0C0A9"
-            BuildableName = "SwiftPredicates.framework"
-            BlueprintName = "SwiftPredicates"
-            ReferencedContainer = "container:SwiftPredicates.xcodeproj">
+            BuildableName = "SWINQ.framework"
+            BlueprintName = "SWINQ"
+            ReferencedContainer = "container:SWINQ.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -65,9 +65,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6C676B7A1C5BB2FA00F0C0A9"
-            BuildableName = "SwiftPredicates.framework"
-            BlueprintName = "SwiftPredicates"
-            ReferencedContainer = "container:SwiftPredicates.xcodeproj">
+            BuildableName = "SWINQ.framework"
+            BlueprintName = "SWINQ"
+            ReferencedContainer = "container:SWINQ.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -83,9 +83,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6C676B7A1C5BB2FA00F0C0A9"
-            BuildableName = "SwiftPredicates.framework"
-            BlueprintName = "SwiftPredicates"
-            ReferencedContainer = "container:SwiftPredicates.xcodeproj">
+            BuildableName = "SWINQ.framework"
+            BlueprintName = "SWINQ"
+            ReferencedContainer = "container:SWINQ.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>
