@@ -77,12 +77,35 @@ extension Array {
         return array
     }
     
-    func takeWhile(predicate: (Element -> Bool)) -> [Element] {
+    func takeWhile(predicate: (Element) -> Bool) -> [Element] {
         var array = [Element]()
         
         for element in self {
             if (!predicate(element)) { break }
             array.append(element)
+        }
+        
+        return array
+    }
+    
+    func skip(count: Int) -> [Element] {
+        var array = [Element]()
+        for (var i=count; i<self.count; i++) {
+            array.append(self[i])
+        }
+        return array
+    }
+    
+    func skipWhile(predicate: (Element) -> Bool) -> [Element] {
+        var array = [Element]()
+        
+        var start = 0
+        while !predicate(self[start]) {
+            start++
+        }
+        
+        for (var i=start; i<self.count; i++) {
+            array.append(self[i])
         }
         
         return array

@@ -368,9 +368,7 @@ class ArrayPredicatesTests: XCTestCase {
         let array = [1, 2, 3, 4, 3, 2, 1]
         
         // act
-        let actual = array.takeWhile { (x) in
-            x < 4
-        }
+        let actual = array.takeWhile { (x) in x < 4 }
         
         // assert
         XCTAssertNotNil(actual)
@@ -378,6 +376,69 @@ class ArrayPredicatesTests: XCTestCase {
         XCTAssertEqual(actual[0], 1)
         XCTAssertEqual(actual[1], 2)
         XCTAssertEqual(actual[2], 3)
+    }
+    
+    func test_takeWhile_ignorePredicateAfterFirstPass() {
+        // assemble
+        let array = [1, 2, 3, 4, 3, 6, 1]
+        
+        // act
+        let actual = array.takeWhile { (x) in x < 4 }
+        
+        // assert
+        XCTAssertNotNil(actual)
+        XCTAssertEqual(3, actual.count)
+        XCTAssertEqual(actual[0], 1)
+        XCTAssertEqual(actual[1], 2)
+        XCTAssertEqual(actual[2], 3)
+    }
+    
+    func test_skip() {
+        // assemble
+        let array = [1, 2, 3, 4, 3, 2, 1]
+        
+        // act
+        let actual = array.skip(3)
+        
+        // assert
+        XCTAssertNotNil(actual)
+        XCTAssertEqual(4, actual.count)
+        XCTAssertEqual(actual[0], 4)
+        XCTAssertEqual(actual[1], 3)
+        XCTAssertEqual(actual[2], 2)
+        XCTAssertEqual(actual[3], 1)
+    }
+    
+    func test_skipWhile() {
+        // assemble
+        let array = [1, 2, 3, 4, 3, 2, 1]
+        
+        // act
+        let actual = array.skipWhile{ (x) in x > 3 }
+        
+        // assert
+        XCTAssertNotNil(actual)
+        XCTAssertEqual(4, actual.count)
+        XCTAssertEqual(actual[0], 4)
+        XCTAssertEqual(actual[1], 3)
+        XCTAssertEqual(actual[2], 2)
+        XCTAssertEqual(actual[3], 1)
+    }
+    
+    func test_skipWhile_ignorePredicateAfterFirstPass() {
+        // assemble
+        let array = [1, 2, 3, 4, 5, 2, 7]
+        
+        // act
+        let actual = array.skipWhile{ (x) in x > 3 }
+        
+        // assert
+        XCTAssertNotNil(actual)
+        XCTAssertEqual(4, actual.count)
+        XCTAssertEqual(actual[0], 4)
+        XCTAssertEqual(actual[1], 5)
+        XCTAssertEqual(actual[2], 2)
+        XCTAssertEqual(actual[3], 7)
     }
 }
 
