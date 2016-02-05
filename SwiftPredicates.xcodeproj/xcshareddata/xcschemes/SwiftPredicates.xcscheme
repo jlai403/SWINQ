@@ -17,7 +17,7 @@
                BlueprintIdentifier = "6C676B7A1C5BB2FA00F0C0A9"
                BuildableName = "SwiftPredicates.framework"
                BlueprintName = "SwiftPredicates"
-               ReferencedContainer = "container:">
+               ReferencedContainer = "container:SwiftPredicates.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
                BlueprintIdentifier = "6C676B841C5BB2FB00F0C0A9"
                BuildableName = "SwiftPredicatesTests.xctest"
                BlueprintName = "SwiftPredicatesTests"
-               ReferencedContainer = "container:">
+               ReferencedContainer = "container:SwiftPredicates.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -45,7 +45,7 @@
             BlueprintIdentifier = "6C676B7A1C5BB2FA00F0C0A9"
             BuildableName = "SwiftPredicates.framework"
             BlueprintName = "SwiftPredicates"
-            ReferencedContainer = "container:">
+            ReferencedContainer = "container:SwiftPredicates.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -67,7 +67,7 @@
             BlueprintIdentifier = "6C676B7A1C5BB2FA00F0C0A9"
             BuildableName = "SwiftPredicates.framework"
             BlueprintName = "SwiftPredicates"
-            ReferencedContainer = "container:">
+            ReferencedContainer = "container:SwiftPredicates.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -85,7 +85,7 @@
             BlueprintIdentifier = "6C676B7A1C5BB2FA00F0C0A9"
             BuildableName = "SwiftPredicates.framework"
             BlueprintName = "SwiftPredicates"
-            ReferencedContainer = "container:">
+            ReferencedContainer = "container:SwiftPredicates.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>
