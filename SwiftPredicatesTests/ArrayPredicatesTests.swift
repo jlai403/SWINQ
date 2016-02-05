@@ -440,6 +440,36 @@ class ArrayPredicatesTests: XCTestCase {
         XCTAssertEqual(actual[2], 2)
         XCTAssertEqual(actual[3], 7)
     }
+    
+    func test_distinct() {
+        // assemble
+        let array = [1, 2, 1, 2, 1, 2, 7]
+
+        // act
+        let actual = array.distinct()
+        
+        // assert
+        XCTAssertNotNil(actual)
+        XCTAssertEqual(3, actual.count)
+        XCTAssertEqual(actual[0], 1)
+        XCTAssertEqual(actual[1], 2)
+        XCTAssertEqual(actual[2], 7)
+    }
+    
+    func test_distinct_unordered() {
+        // assemble
+        let array = [7, 2, 1, 2, 1, 2, 7]
+        
+        // act
+        let actual = array.distinct()
+        
+        // assert
+        XCTAssertNotNil(actual)
+        XCTAssertEqual(3, actual.count)
+        XCTAssertEqual(actual[0], 7)
+        XCTAssertEqual(actual[1], 2)
+        XCTAssertEqual(actual[2], 1)
+    }
 }
 
 

@@ -111,3 +111,16 @@ extension Array {
         return array
     }
 }
+
+extension Array where Element: Equatable {
+
+    func distinct() -> [Element] {
+        let array = [Element]()
+        return self.reduce(array, combine: { (var array, element) in
+            if !array.contains(element) {
+                array.append(element)
+            }
+            return array
+        })
+    }
+}
