@@ -82,8 +82,7 @@
 				6C676B991C5BB95000F0C0A9 /* ArrayExtensions.swift */,
 				6C676B951C5BB45300F0C0A9 /* ArrayPredicates.swift */,
 			);
-			name = SWINQ;
-			path = SwiftPredicates;
+			path = SWINQ;
 			sourceTree = "<group>";
 		};
 		6C676B891C5BB2FB00F0C0A9 /* SWINQTests */ = {
@@ -94,8 +93,7 @@
 				6C676B8A1C5BB2FB00F0C0A9 /* ArrayPredicatesTests.swift */,
 				6C676B8C1C5BB2FB00F0C0A9 /* Info.plist */,
 			);
-			name = SWINQTests;
-			path = SwiftPredicatesTests;
+			path = SWINQTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -329,7 +327,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = SwiftPredicates/Info.plist;
+				INFOPLIST_FILE = SWINQ/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ca.jlai.swinq;
@@ -347,7 +345,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = SwiftPredicates/Info.plist;
+				INFOPLIST_FILE = SWINQ/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ca.jlai.swinq;
@@ -359,7 +357,7 @@
 		6C676B931C5BB2FB00F0C0A9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = SwiftPredicatesTests/Info.plist;
+				INFOPLIST_FILE = SwinqTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ca.jlai.swinqTests;
 				PRODUCT_NAME = SWINQTests;
@@ -369,7 +367,7 @@
 		6C676B941C5BB2FB00F0C0A9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = SwiftPredicatesTests/Info.plist;
+				INFOPLIST_FILE = SwinqTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ca.jlai.swinqTests;
 				PRODUCT_NAME = SWINQTests;
