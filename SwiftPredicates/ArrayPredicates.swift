@@ -110,6 +110,10 @@ extension Array {
         
         return array
     }
+    
+    func count(predicate: (Element) -> Bool) -> Int {
+        return self.all(predicate).count
+    }
 }
 
 extension Array where Element: Equatable {
@@ -122,5 +126,15 @@ extension Array where Element: Equatable {
             }
             return array
         })
+    }
+}
+
+extension Array where Element: Addable {
+    
+    func sum<T: Addable>() -> T {
+        let total = T()
+        return self.select{ $0 as! T }.reduce(total) { (total, element) in
+            return total + element
+        }
     }
 }

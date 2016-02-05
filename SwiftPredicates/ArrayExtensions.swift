@@ -17,3 +17,13 @@ extension Array where Element: Equatable {
         }
     }
 }
+
+
+protocol Addable {
+    func +(lhs: Self, rhs: Self) -> Self
+    init()
+}
+
+extension Int: Addable {}
+extension Float: Addable {}
+extension Double: Addable {}

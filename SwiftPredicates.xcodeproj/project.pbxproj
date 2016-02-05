@@ -81,8 +81,8 @@
 			children = (
 				6C676B7E1C5BB2FA00F0C0A9 /* SwiftPredicates.h */,
 				6C676B801C5BB2FA00F0C0A9 /* Info.plist */,
-				6C676B951C5BB45300F0C0A9 /* ArrayPredicates.swift */,
 				6C676B991C5BB95000F0C0A9 /* ArrayExtensions.swift */,
+				6C676B951C5BB45300F0C0A9 /* ArrayPredicates.swift */,
 			);
 			path = SwiftPredicates;
 			sourceTree = "<group>";
@@ -91,9 +91,9 @@
 			isa = PBXGroup;
 			children = (
 				6C676B971C5BB66A00F0C0A9 /* TestItem.swift */,
+				6C676B9B1C5BB9A800F0C0A9 /* ArrayExtensionsTest.swift */,
 				6C676B8A1C5BB2FB00F0C0A9 /* ArrayPredicatesTests.swift */,
 				6C676B8C1C5BB2FB00F0C0A9 /* Info.plist */,
-				6C676B9B1C5BB9A800F0C0A9 /* ArrayExtensionsTest.swift */,
 			);
 			path = SwiftPredicatesTests;
 			sourceTree = "<group>";
@@ -395,6 +395,7 @@
 				6C676B911C5BB2FB00F0C0A9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6C676B921C5BB2FB00F0C0A9 /* Build configuration list for PBXNativeTarget "SwiftPredicatesTests" */ = {
 			isa = XCConfigurationList;
@@ -403,6 +404,7 @@
 				6C676B941C5BB2FB00F0C0A9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

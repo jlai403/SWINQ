@@ -459,7 +459,7 @@ class ArrayPredicatesTests: XCTestCase {
     func test_distinct_unordered() {
         // assemble
         let array = [7, 2, 1, 2, 1, 2, 7]
-        
+
         // act
         let actual = array.distinct()
         
@@ -469,6 +469,39 @@ class ArrayPredicatesTests: XCTestCase {
         XCTAssertEqual(actual[0], 7)
         XCTAssertEqual(actual[1], 2)
         XCTAssertEqual(actual[2], 1)
+    }
+    
+    func test_count_predicate() {
+        // assemble
+        let array = [7, 2, 1, 2, 1, 2, 7]
+        
+        // act
+        let actual = array.count { $0 == 7 }
+        
+        // assert
+        XCTAssertEqual(2, actual)
+    }
+    
+    func test_sum() {
+        // assemble
+        let array = [7, 2, 1, 2, 1, 2, 7]
+        
+        // act
+        let actual:Int = array.sum()
+        
+        // assert
+        XCTAssertEqual(22, actual)
+    }
+    
+    func test_sum_double() {
+        // assemble
+        let array = [7.2, 2.3, 1.5, 2.5, 1.2, 2.3, 7.5]
+        
+        // act
+        let actual:Double = array.sum()
+        
+        // assert
+        XCTAssertEqual(24.5, actual)
     }
 }
 
