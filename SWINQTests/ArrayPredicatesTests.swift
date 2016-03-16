@@ -535,6 +535,156 @@ class ArrayPredicatesTests: XCTestCase {
         // assert
         XCTAssertEqual(secondTestItem.double, actual)
     }
+    
+    func test_max_int_multiple() {
+        // assemble
+        let firstTestItem = TestItem(int: 1, text: "Wubba lubba dub dub")
+        let secondTestItem = TestItem(int: 5, text: "Wubba lubba dub dub")
+        let thirdTestItem = TestItem(int: 10, text: "Wubba lubba dub dub")
+        let fourthTestItem = TestItem(int: 10, text: "Grass tastes bad")
+        
+        let array = [firstTestItem, secondTestItem, thirdTestItem, fourthTestItem]
+        
+        // act
+        let actual = array.max { (x) in return x.int }
+        
+        // assert
+        XCTAssertEqual(10, actual)
+    }
+    
+    func test_max_double_multple() {
+        // assemble
+        let firstTestItem = TestItem(double: 1.1, text: "Wubba lubba dub dub")
+        let secondTestItem = TestItem(double: 10.5, text: "Wubba lubba dub dub")
+        let thirdTestItem = TestItem(double: 10.1, text: "Wubba lubba dub dub")
+        let fourthTestItem = TestItem(double: 10.5, text: "Grass tastes bad")
+        
+        let array = [firstTestItem, secondTestItem, thirdTestItem, fourthTestItem]
+        
+        // act
+        let actual = array.max { (x) in return x.double }
+        
+        // assert
+        XCTAssertEqual(10.5, actual)
+    }
+    
+    func test_min_int() {
+        // assemble
+        let firstTestItem = TestItem(int: 10, text: "Wubba lubba dub dub")
+        let secondTestItem = TestItem(int: 5, text: "Wubba lubba dub dub")
+        let thirdTestItem = TestItem(int: 1, text: "Wubba lubba dub dub")
+        let fourthTestItem = TestItem(int: 7, text: "Grass tastes bad")
+        
+        let array = [firstTestItem, secondTestItem, thirdTestItem, fourthTestItem]
+        
+        // act
+        let actual = array.min { (x) in return x.int }
+        
+        // assert
+        XCTAssertEqual(thirdTestItem.int, actual)
+    }
+    
+    func test_min_double() {
+        // assemble
+        let firstTestItem = TestItem(double: 1.1, text: "Wubba lubba dub dub")
+        let secondTestItem = TestItem(double: 1.0, text: "Wubba lubba dub dub")
+        let thirdTestItem = TestItem(double: 10.1, text: "Wubba lubba dub dub")
+        let fourthTestItem = TestItem(double: 8.7, text: "Grass tastes bad")
+        
+        let array = [firstTestItem, secondTestItem, thirdTestItem, fourthTestItem]
+        
+        // act
+        let actual = array.min { (x) in return x.double }
+        
+        // assert
+        XCTAssertEqual(secondTestItem.double, actual)
+    }
+    
+    func test_min_int_multiple() {
+        // assemble
+        let firstTestItem = TestItem(int: 10, text: "Wubba lubba dub dub")
+        let secondTestItem = TestItem(int: 1, text: "Wubba lubba dub dub")
+        let thirdTestItem = TestItem(int: 1, text: "Wubba lubba dub dub")
+        let fourthTestItem = TestItem(int: 7, text: "Grass tastes bad")
+        
+        let array = [firstTestItem, secondTestItem, thirdTestItem, fourthTestItem]
+        
+        // act
+        let actual = array.min { (x) in return x.int }
+        
+        // assert
+        XCTAssertEqual(1, actual)
+    }
+    
+    func test_min_double_multiple() {
+        // assemble
+        let firstTestItem = TestItem(double: 1.1, text: "Wubba lubba dub dub")
+        let secondTestItem = TestItem(double: 1.0, text: "Wubba lubba dub dub")
+        let thirdTestItem = TestItem(double: 10.1, text: "Wubba lubba dub dub")
+        let fourthTestItem = TestItem(double: 1.0, text: "Grass tastes bad")
+        
+        let array = [firstTestItem, secondTestItem, thirdTestItem, fourthTestItem]
+        
+        // act
+        let actual = array.min { (x) in return x.double }
+        
+        // assert
+        XCTAssertEqual(1.0, actual)
+    }
+    
+    func test_min_int_negative() {
+        // assemble
+        let firstTestItem = TestItem(int: 10, text: "Wubba lubba dub dub")
+        let secondTestItem = TestItem(int: 1, text: "Wubba lubba dub dub")
+        let thirdTestItem = TestItem(int: -5, text: "Wubba lubba dub dub")
+        let fourthTestItem = TestItem(int: 7, text: "Grass tastes bad")
+        
+        let array = [firstTestItem, secondTestItem, thirdTestItem, fourthTestItem]
+        
+        // act
+        let actual = array.min { (x) in return x.int }
+        
+        // assert
+        XCTAssertEqual(-5, actual)
+    }
+    
+    func test_min_double_negative() {
+        // assemble
+        let firstTestItem = TestItem(double: 1.1, text: "Wubba lubba dub dub")
+        let secondTestItem = TestItem(double: 1.0, text: "Wubba lubba dub dub")
+        let thirdTestItem = TestItem(double: 10.1, text: "Wubba lubba dub dub")
+        let fourthTestItem = TestItem(double: -1.0, text: "Grass tastes bad")
+        
+        let array = [firstTestItem, secondTestItem, thirdTestItem, fourthTestItem]
+        
+        // act
+        let actual = array.min { (x) in return x.double }
+        
+        // assert
+        XCTAssertEqual(-1.0, actual)
+    }
+    
+    func test_min_int_empty() {
+        // assemble
+        let array: [TestItem] = []
+        
+        // act
+        let actual = array.min { (x) in return x.int }
+        
+        // assert
+        XCTAssertEqual(0, actual)
+    }
+    
+    func test_min_double_empty() {
+        // assemble
+        let array: [TestItem] = []
+        
+        // act
+        let actual = array.min { (x) in return x.double }
+        
+        // assert
+        XCTAssertEqual(0.0, actual)
+    }
 }
 
 

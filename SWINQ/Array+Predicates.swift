@@ -122,6 +122,15 @@ extension Array {
             return maxValue
         }
     }
+    
+    func min<T: Numeric>(predicate: (Element) -> T) -> T {
+        let elementList = self.select(predicate)
+        let minValue:T = elementList.first != nil ? elementList.first! : T()
+        return elementList.reduce(minValue) { (var minValue, element) in
+            minValue = element < minValue ? element : minValue
+            return minValue
+        }
+    }
 }
 
 extension Array where Element: Equatable {
