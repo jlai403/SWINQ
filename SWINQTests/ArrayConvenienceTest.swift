@@ -1,7 +1,7 @@
 import XCTest
 @testable import SWINQ
 
-class ArrayExtensionsTests: XCTestCase {
+class ArrayConvenienceTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

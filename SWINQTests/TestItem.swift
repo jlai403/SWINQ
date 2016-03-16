@@ -2,7 +2,8 @@ import Foundation
 
 class TestItem: Equatable {
     
-    var num: Int = 0
+    var int: Int = 0
+    var double: Double = 0.0
     var text: String = ""
     var array: [String] = []
     
@@ -11,13 +12,18 @@ class TestItem: Equatable {
         self.text = text
     }
     
-    convenience init(num: Int, text: String) {
+    convenience init(int: Int, text: String) {
         self.init(text: text)
-        self.num = num
+        self.int = int
     }
     
-    convenience init(num: Int, text: String, array: String...) {
-        self.init(num: num, text: text)
+    convenience init(double: Double, text: String) {
+        self.init(text: text)
+        self.double = double
+    }
+    
+    convenience init(int: Int, text: String, array: String...) {
+        self.init(int: int, text: text)
         self.array = array
     }
     
@@ -29,6 +35,6 @@ class TestItem: Equatable {
 
 func ==(lhs: TestItem, rhs: TestItem) -> Bool {
     return
-        lhs.num == rhs.num &&
+        lhs.int == rhs.int &&
         lhs.text == rhs.text
 }

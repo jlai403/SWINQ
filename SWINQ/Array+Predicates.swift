@@ -114,6 +114,14 @@ extension Array {
     func count(predicate: (Element) -> Bool) -> Int {
         return self.all(predicate).count
     }
+    
+    func max<T: Numeric>(predicate: (Element) -> T) -> T {
+        let maxValue = T()
+        return self.select(predicate).reduce(maxValue) { (var maxValue, element) in
+            maxValue = element > maxValue ? element : maxValue
+            return maxValue
+        }
+    }
 }
 
 extension Array where Element: Equatable {
@@ -129,12 +137,13 @@ extension Array where Element: Equatable {
     }
 }
 
-extension Array where Element: Addable {
+extension Array where Element: Numeric {
     
-    func sum<T: Addable>() -> T {
+    func sum<T: Numeric>() -> T {
         let total = T()
         return self.select{ $0 as! T }.reduce(total) { (total, element) in
             return total + element
         }
     }
 }
+

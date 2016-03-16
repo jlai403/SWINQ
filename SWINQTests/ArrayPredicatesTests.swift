@@ -28,10 +28,10 @@ class ArrayPredicatesTests: XCTestCase {
     func test_firstOrDefault_Multiple() {
         // assemble
         let array = [
-            TestItem(num: 1, text: "Wubba lubba dub dub"),
-            TestItem(num: 2, text: "Wubba lubba dub dub"),
-            TestItem(num: 3, text: "Wubba lubba dub dub"),
-            TestItem(num: 4, text: "Grass tastes bad")
+            TestItem(int: 1, text: "Wubba lubba dub dub"),
+            TestItem(int: 2, text: "Wubba lubba dub dub"),
+            TestItem(int: 3, text: "Wubba lubba dub dub"),
+            TestItem(int: 4, text: "Grass tastes bad")
         ]
         
         // act
@@ -39,16 +39,16 @@ class ArrayPredicatesTests: XCTestCase {
         
         // assert
         XCTAssertNotNil(actual)
-        XCTAssertEqual(TestItem(num: 1, text: "Wubba lubba dub dub"), actual!)
+        XCTAssertEqual(TestItem(int: 1, text: "Wubba lubba dub dub"), actual!)
     }
     
     func test_firstOrDefault_Default() {
         // assemble
         let array = [
-            TestItem(num: 1, text: "Wubba lubba dub dub"),
-            TestItem(num: 2, text: "Wubba lubba dub dub"),
-            TestItem(num: 3, text: "Wubba lubba dub dub"),
-            TestItem(num: 4, text: "Grass tastes bad")
+            TestItem(int: 1, text: "Wubba lubba dub dub"),
+            TestItem(int: 2, text: "Wubba lubba dub dub"),
+            TestItem(int: 3, text: "Wubba lubba dub dub"),
+            TestItem(int: 4, text: "Grass tastes bad")
         ]
         
         let defaultValue = TestItem(text: "Default value")
@@ -77,10 +77,10 @@ class ArrayPredicatesTests: XCTestCase {
     func test_lastOrDefault_Multiple() {
         // assemble
         let array = [
-            TestItem(num: 1, text: "Wubba lubba dub dub"),
-            TestItem(num: 2, text: "Wubba lubba dub dub"),
-            TestItem(num: 3, text: "Wubba lubba dub dub"),
-            TestItem(num: 4, text: "Grass tastes bad")
+            TestItem(int: 1, text: "Wubba lubba dub dub"),
+            TestItem(int: 2, text: "Wubba lubba dub dub"),
+            TestItem(int: 3, text: "Wubba lubba dub dub"),
+            TestItem(int: 4, text: "Grass tastes bad")
         ]
         
         // act
@@ -88,16 +88,16 @@ class ArrayPredicatesTests: XCTestCase {
         
         // assert
         XCTAssertNotNil(actual)
-        XCTAssertEqual(TestItem(num: 3, text: "Wubba lubba dub dub"), actual)
+        XCTAssertEqual(TestItem(int: 3, text: "Wubba lubba dub dub"), actual)
     }
     
     func test_lastOrDefault_Default() {
         // assemble
         let array = [
-            TestItem(num: 1, text: "Wubba lubba dub dub"),
-            TestItem(num: 2, text: "Wubba lubba dub dub"),
-            TestItem(num: 3, text: "Wubba lubba dub dub"),
-            TestItem(num: 4, text: "Grass tastes bad")
+            TestItem(int: 1, text: "Wubba lubba dub dub"),
+            TestItem(int: 2, text: "Wubba lubba dub dub"),
+            TestItem(int: 3, text: "Wubba lubba dub dub"),
+            TestItem(int: 4, text: "Grass tastes bad")
         ]
         
         let defaultValue = TestItem(text: "Default value")
@@ -323,16 +323,16 @@ class ArrayPredicatesTests: XCTestCase {
     
     func test_toDictionary() {
         // assemble
-        let firstTestItem = TestItem(num: 1, text: "Wubba lubba dub dub")
-        let secondTestItem = TestItem(num: 2, text: "Wubba lubba dub dub")
-        let thirdTestItem = TestItem(num: 3, text: "Wubba lubba dub dub")
-        let fourthTestItem = TestItem(num: 4, text: "Grass tastes bad")
+        let firstTestItem = TestItem(int: 1, text: "Wubba lubba dub dub")
+        let secondTestItem = TestItem(int: 2, text: "Wubba lubba dub dub")
+        let thirdTestItem = TestItem(int: 3, text: "Wubba lubba dub dub")
+        let fourthTestItem = TestItem(int: 4, text: "Grass tastes bad")
         
         let array = [firstTestItem, secondTestItem, thirdTestItem, fourthTestItem]
         
         // act
         let dictionary = array.toDictionary { (ti) in
-            return (key: ti.num, value: ti)
+            return (key: ti.int, value: ti)
         }
         
         // assert
@@ -346,10 +346,10 @@ class ArrayPredicatesTests: XCTestCase {
     
     func test_take() {
         // assemble
-        let firstTestItem = TestItem(num: 1, text: "Wubba lubba dub dub")
-        let secondTestItem = TestItem(num: 2, text: "Wubba lubba dub dub")
-        let thirdTestItem = TestItem(num: 3, text: "Wubba lubba dub dub")
-        let fourthTestItem = TestItem(num: 4, text: "Grass tastes bad")
+        let firstTestItem = TestItem(int: 1, text: "Wubba lubba dub dub")
+        let secondTestItem = TestItem(int: 2, text: "Wubba lubba dub dub")
+        let thirdTestItem = TestItem(int: 3, text: "Wubba lubba dub dub")
+        let fourthTestItem = TestItem(int: 4, text: "Grass tastes bad")
         
         let array = [firstTestItem, secondTestItem, thirdTestItem, fourthTestItem]
         
@@ -500,8 +500,40 @@ class ArrayPredicatesTests: XCTestCase {
         // act
         let actual:Double = array.sum()
         
-        // assert
+        // assertmaxValue
         XCTAssertEqual(24.5, actual)
+    }
+    
+    func test_max_int() {
+        // assemble
+        let firstTestItem = TestItem(int: 1, text: "Wubba lubba dub dub")
+        let secondTestItem = TestItem(int: 5, text: "Wubba lubba dub dub")
+        let thirdTestItem = TestItem(int: 10, text: "Wubba lubba dub dub")
+        let fourthTestItem = TestItem(int: 7, text: "Grass tastes bad")
+        
+        let array = [firstTestItem, secondTestItem, thirdTestItem, fourthTestItem]
+        
+        // act
+        let actual = array.max { (x) in return x.int }
+        
+        // assert
+        XCTAssertEqual(thirdTestItem.int, actual)
+    }
+    
+    func test_max_double() {
+        // assemble
+        let firstTestItem = TestItem(double: 1.1, text: "Wubba lubba dub dub")
+        let secondTestItem = TestItem(double: 10.5, text: "Wubba lubba dub dub")
+        let thirdTestItem = TestItem(double: 10.1, text: "Wubba lubba dub dub")
+        let fourthTestItem = TestItem(double: 8.7, text: "Grass tastes bad")
+        
+        let array = [firstTestItem, secondTestItem, thirdTestItem, fourthTestItem]
+        
+        // act
+        let actual = array.max { (x) in return x.double }
+        
+        // assert
+        XCTAssertEqual(secondTestItem.double, actual)
     }
 }
 

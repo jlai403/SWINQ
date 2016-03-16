@@ -8,11 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		6C676B7F1C5BB2FA00F0C0A9 /* SwiftPredicates.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C676B7E1C5BB2FA00F0C0A9 /* SwiftPredicates.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6C676B8B1C5BB2FB00F0C0A9 /* ArrayPredicatesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C676B8A1C5BB2FB00F0C0A9 /* ArrayPredicatesTests.swift */; };
 		6C676B961C5BB45300F0C0A9 /* Array+Predicates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C676B951C5BB45300F0C0A9 /* Array+Predicates.swift */; };
 		6C676B981C5BB66A00F0C0A9 /* TestItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C676B971C5BB66A00F0C0A9 /* TestItem.swift */; };
 		6C676B9A1C5BB95000F0C0A9 /* Array+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C676B991C5BB95000F0C0A9 /* Array+Convenience.swift */; };
-		6C676B9C1C5BB9A800F0C0A9 /* ArrayExtensionsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C676B9B1C5BB9A800F0C0A9 /* ArrayExtensionsTest.swift */; };
+		6C676B9C1C5BB9A800F0C0A9 /* ArrayConvenienceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C676B9B1C5BB9A800F0C0A9 /* ArrayConvenienceTest.swift */; };
+		6E734BF31C9A1645007F644F /* ArrayPredicatesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C676B8A1C5BB2FB00F0C0A9 /* ArrayPredicatesTests.swift */; };
+		6E734BF51C9A1D67007F644F /* Numeric+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E734BF41C9A1D67007F644F /* Numeric+Convenience.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +36,8 @@
 		6C676B951C5BB45300F0C0A9 /* Array+Predicates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Predicates.swift"; sourceTree = "<group>"; };
 		6C676B971C5BB66A00F0C0A9 /* TestItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestItem.swift; sourceTree = "<group>"; };
 		6C676B991C5BB95000F0C0A9 /* Array+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Convenience.swift"; sourceTree = "<group>"; };
-		6C676B9B1C5BB9A800F0C0A9 /* ArrayExtensionsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtensionsTest.swift; sourceTree = "<group>"; };
+		6C676B9B1C5BB9A800F0C0A9 /* ArrayConvenienceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayConvenienceTest.swift; sourceTree = "<group>"; };
+		6E734BF41C9A1D67007F644F /* Numeric+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Numeric+Convenience.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 				6C676B801C5BB2FA00F0C0A9 /* Info.plist */,
 				6C676B991C5BB95000F0C0A9 /* Array+Convenience.swift */,
 				6C676B951C5BB45300F0C0A9 /* Array+Predicates.swift */,
+				6E734BF41C9A1D67007F644F /* Numeric+Convenience.swift */,
 			);
 			path = SWINQ;
 			sourceTree = "<group>";
@@ -89,7 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				6C676B971C5BB66A00F0C0A9 /* TestItem.swift */,
-				6C676B9B1C5BB9A800F0C0A9 /* ArrayExtensionsTest.swift */,
+				6C676B9B1C5BB9A800F0C0A9 /* ArrayConvenienceTest.swift */,
 				6C676B8A1C5BB2FB00F0C0A9 /* ArrayPredicatesTests.swift */,
 				6C676B8C1C5BB2FB00F0C0A9 /* Info.plist */,
 			);
@@ -206,6 +209,7 @@
 			files = (
 				6C676B9A1C5BB95000F0C0A9 /* Array+Convenience.swift in Sources */,
 				6C676B961C5BB45300F0C0A9 /* Array+Predicates.swift in Sources */,
+				6E734BF51C9A1D67007F644F /* Numeric+Convenience.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,9 +217,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6C676B9C1C5BB9A800F0C0A9 /* ArrayExtensionsTest.swift in Sources */,
+				6E734BF31C9A1645007F644F /* ArrayPredicatesTests.swift in Sources */,
+				6C676B9C1C5BB9A800F0C0A9 /* ArrayConvenienceTest.swift in Sources */,
 				6C676B981C5BB66A00F0C0A9 /* TestItem.swift in Sources */,
-				6C676B8B1C5BB2FB00F0C0A9 /* ArrayPredicatesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
