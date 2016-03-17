@@ -504,6 +504,28 @@ class ArrayPredicatesTests: XCTestCase {
         XCTAssertEqual(24.5, actual)
     }
     
+    func test_sum_negatives() {
+        // assemble
+        let array = [7, -2, 1, 2, 1, 2, 7, -7]
+        
+        // act
+        let actual:Int = array.sum()
+        
+        // assert
+        XCTAssertEqual(11, actual)
+    }
+    
+    func test_sum_double_negative() {
+        // assemble
+        let array = [7.2, 2.3, 1.5, -1.5, 2.5, 1.2, 2.3, 7.5, -7.5]
+        
+        // act
+        let actual:Double = array.sum()
+        
+        // assertmaxValue
+        XCTAssertEqual(15.5, actual)
+    }
+    
     func test_max_int() {
         // assemble
         let firstTestItem = TestItem(int: 1, text: "Wubba lubba dub dub")
