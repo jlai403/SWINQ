@@ -131,6 +131,24 @@ extension Array {
             return minValue
         }
     }
+    
+    func average<T: Numeric>(predicate: (Element) -> T) -> Double {
+        let elementList = self.select(predicate)
+        if elementList.isEmpty { return Double() }
+        let denominator = elementList.count
+        let sum:T = elementList.sum()
+        if let numerator = sum as? Int {
+            return Double(numerator) / Double(denominator)
+        }
+        if let numerator = sum as? Float {
+            return Double(numerator) / Double(denominator)
+        }
+        if let numerator = sum as? Double {
+           
+            return Double(numerator) / Double(denominator)
+        }
+        fatalError("numerator: '\(sum)' is not of type Numeric.")
+    }
 }
 
 extension Array where Element: Equatable {
