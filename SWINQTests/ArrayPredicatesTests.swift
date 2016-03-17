@@ -526,7 +526,7 @@ class ArrayPredicatesTests: XCTestCase {
         XCTAssertEqual(15.5, actual)
     }
     
-    func test_max_int() {
+    func test_max_predicate_int() {
         // assemble
         let firstTestElement = TestElement(int: 1, text: "Wubba lubba dub dub")
         let secondTestElement = TestElement(int: 5, text: "Wubba lubba dub dub")
@@ -708,7 +708,7 @@ class ArrayPredicatesTests: XCTestCase {
         XCTAssertEqual(0.0, actual)
     }
     
-    func test_average_double() {
+    func test_average_predicate_double() {
         // assemble
         let firstTestElement = TestElement(double: 0.25, text: "Wubba lubba dub dub")
         let secondTestElement = TestElement(double: 0.25, text: "Wubba lubba dub dub")
@@ -719,6 +719,17 @@ class ArrayPredicatesTests: XCTestCase {
         
         // act
         let actual = array.average { (x) in return x.double }
+        
+        // assert
+        XCTAssertEqual(0.25, actual)
+    }
+    
+    func test_average_double() {
+        // assemble
+        let array = [0.25, 0.25, 0.25, 0.25]
+        
+        // act
+        let actual = array.average()
         
         // assert
         XCTAssertEqual(0.25, actual)
@@ -740,7 +751,7 @@ class ArrayPredicatesTests: XCTestCase {
         XCTAssertEqual(0.25, actual)
     }
     
-    func test_average_int() {
+    func test_average_predicate_int() {
         // assemble
         let firstTestElement = TestElement(int: 25, text: "Wubba lubba dub dub")
         let secondTestElement = TestElement(int: 25, text: "Wubba lubba dub dub")
@@ -751,6 +762,17 @@ class ArrayPredicatesTests: XCTestCase {
         
         // act
         let actual = array.average { (x) in return x.int }
+        
+        // assert
+        XCTAssertEqual(25, actual)
+    }
+    
+    func test_average_int() {
+        // assemble
+        let array = [25, 25, 25, 25]
+        
+        // act
+        let actual = array.average()
         
         // assert
         XCTAssertEqual(25, actual)

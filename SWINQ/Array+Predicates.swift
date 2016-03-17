@@ -162,5 +162,12 @@ extension Array where Element: Numeric {
             return total + element
         }
     }
+    
+    func average() -> Double {
+        if self.isEmpty { return Double() }
+        let numerator: Element = self.sum()
+        let denominator = self.count
+        return numerator / denominator
+    }
 }
 
