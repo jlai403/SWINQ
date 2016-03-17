@@ -132,9 +132,9 @@ extension Array {
         }
     }
     
-    func average<T: Numeric>(predicate: (Element) -> T) -> T {
+    func average<T: Numeric>(predicate: (Element) -> T) -> Double {
         let elementList = self.select(predicate)
-        if elementList.isEmpty { return T() }
+        if elementList.isEmpty { return Double() }
         let numerator:T = elementList.sum()
         let denominator = elementList.count
         return numerator / denominator

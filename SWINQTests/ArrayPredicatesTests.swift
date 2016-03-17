@@ -756,6 +756,22 @@ class ArrayPredicatesTests: XCTestCase {
         XCTAssertEqual(25, actual)
     }
     
+    func test_average_int_averageDouble() {
+        // assemble
+        let firstTestElement = TestElement(int: 25, text: "Wubba lubba dub dub")
+        let secondTestElement = TestElement(int: 25, text: "Wubba lubba dub dub")
+        let thirdTestElement = TestElement(int: 26, text: "Wubba lubba dub dub")
+        let fourthTestElement = TestElement(int: 26, text: "Grass tastes bad")
+        
+        let array = [firstTestElement, secondTestElement, thirdTestElement, fourthTestElement]
+        
+        // act
+        let actual = array.average { (x) in return x.int }
+        
+        // assert
+        XCTAssertEqual(25.5, actual)
+    }
+    
     func test_average_empty() {
         // assemble
         let array = [TestElement]()

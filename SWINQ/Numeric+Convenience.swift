@@ -9,7 +9,7 @@ protocol Multiplicable {
     func *(lhs: Self, rhs: Self) -> Self
     func /(lhs: Self, rhs: Self) -> Self
     // Override for averages
-    func /(lhs: Self, rhs: Int) -> Self
+    func /(lhs: Self, rhs: Int) -> Double
 }
 
 protocol Numeric: Addable, Multiplicable, Comparable {
@@ -18,10 +18,14 @@ protocol Numeric: Addable, Multiplicable, Comparable {
 
 extension Int: Numeric {}
 
+func /(lhs: Int, rhs: Int) -> Double {
+    return Double(lhs) / Double(rhs)
+}
+
 extension Float: Numeric {}
 
-func /(lhs: Float, rhs: Int) -> Float {
-    return lhs / Float(rhs)
+func /(lhs: Float, rhs: Int) -> Double {
+    return Double(lhs) / Double(rhs)
 }
 
 extension Double: Numeric {}
