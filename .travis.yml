@@ -2,7 +2,11 @@ language: objective-c
 osx_image: xcode7.2
 xcode_project: SWINQ.xcodeproj
 xcode_scheme: SWINQ
-script: 
-  - xcodebuild -scheme SWINQ -destination "name=iPhone 6,OS=latest" -enableCodeCoverage YES test
+script:
+- xcodebuild -scheme SWINQ -destination "name=iPhone 6,OS=latest" -enableCodeCoverage
+  YES test
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+- bash <(curl -s https://codecov.io/bash)
+notifications:
+  slack:
+    secure: ixz6k0FKJNOIbU6IKHryk4PJ4I7ac6R1fCnuSI2nCFH6fZKRVWICngdtxl9UxNY2OjRKckcqK7pZMpUd/+w6ZPytDuxGppwcaJliobrA3NEFpj3GvbZSt/AyfH8Rj6PfbXM+etiY2NlkpjKmE5GxWP4Zt+afXICTKFLabYISS1ixx7pWwYRAR2eAa8ZQKRCa3ijALRI81Ky5H54jC4IqxLexBLb2SeU2uzkfj0Mx11cixWyIz8M+ba5lnqoZc5F6s4NdIjWrtGPaEJ+5kclQNEaMmcjK57K6p8e2XgM8oY2ibcPLU+59FoWLj+PSzwDhPiW7OloqQuOA1FAOHHvUEFBxuZC+aHbzKWa/sj3rgyvZhsUcF5RUjlAQZG+gC8eP5Ow2lUFEiIWbobtx9/Dx2BYe9tpcjcXBGehn5Wr/3SUon1lKORHG2p1CasYHmFOUFjeW7YqyZGLpGUzVu9uxzPVVEjEAgRRgGHV8Nv2qm6nN01vFOasyRHrIHsiQI8Q1v0eInG9q8KIEyTLyOaUgFBWsBB5E+f7bpK1QL9oL2gg/ffLyVae76X5yMiBZcqZC0RBDW7on8yz07YYntizEisv+l2XIVll0Bpw+KafjYSaJpZLcCJKutUicpr4NLWMO7oUUq7Jvz0rvD2zdIEox92fWwrp5M+hyWBimG3ZmFIM=
