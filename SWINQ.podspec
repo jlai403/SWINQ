@@ -80,7 +80,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/jlai403/SWINQ.git", :commit => "207e7b29bcd6c84cecec38af115eb9ce05c52d78" }
+  s.source       = { :git => "https://github.com/jlai403/SWINQ.git", :commit => "912d6c23c78ef3f13d0ca1e14a980c15f45cf909" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -92,7 +92,7 @@ Pod::Spec.new do |s|
   #
 
   s.source_files  = "SWINQ/**/*.{swift}"
-  s.exclude_files = "Classes/Exclude"
+  #s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"
 
