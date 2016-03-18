@@ -80,7 +80,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/jlai403/SWINQ.git", :commit => "912d6c23c78ef3f13d0ca1e14a980c15f45cf909" }
+  s.source       = { :git => "https://github.com/jlai403/SWINQ.git", :commit => "fdc32f9e5ef4f0fa56dd050c35f0d21a76dff942" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
