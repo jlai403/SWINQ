@@ -33,7 +33,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6C676B841C5BB2FB00F0C0A9"
+               BlueprintIdentifier = "6C3A54AD1C9A7448001284BB"
                BuildableName = "SWINQTests.xctest"
                BlueprintName = "SWINQTests"
                ReferencedContainer = "container:SWINQ.xcodeproj">
