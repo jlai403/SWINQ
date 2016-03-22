@@ -31,12 +31,13 @@ extension Array {
     }
     
     func selectMany<T>(predicate: (Element -> [T])) -> [T] {
-        let array = [T]()
-
-        return self.reduce(array) { (var array, element) in
+        var array = [T]()
+        
+        self.forEach({ (element) in
             array.appendContentsOf(predicate(element))
-            return array
-        }
+        })
+        
+        return array
     }
     
     func any(predicate: (Element -> Bool)? = nil) -> Bool {
@@ -57,13 +58,13 @@ extension Array {
     }
     
     func toDictionary<Key: Hashable, Value>(predicate: (Element)->(key: Key, value: Value)) -> [Key: Value] {
-        let dictionary = [Key: Value]()
-        
-        return self.reduce(dictionary) { (var dictionary, element) in
+        var dictionary = [Key: Value]()
+        self.forEach { (element) in
             let keyPair = predicate(element)
             dictionary[keyPair.key] = keyPair.value
-            return dictionary
+            
         }
+        return dictionary
     }
     
     func take(count: Int) -> [Element] {
@@ -90,7 +91,7 @@ extension Array {
     
     func skip(count: Int) -> [Element] {
         var array = [Element]()
-        for (var i=count; i<self.count; i++) {
+        for i in count ..< self.count {
             array.append(self[i])
         }
         return array
@@ -101,10 +102,10 @@ extension Array {
         
         var start = 0
         while !predicate(self[start]) {
-            start++
+            start += 1
         }
         
-        for (var i=start; i<self.count; i++) {
+        for i in start ..< self.count {
             array.append(self[i])
         }
         
@@ -116,20 +117,24 @@ extension Array {
     }
     
     func max<T: Numeric>(predicate: (Element) -> T) -> T {
-        let maxValue = T()
-        return self.select(predicate).reduce(maxValue) { (var maxValue, element) in
-            maxValue = element > maxValue ? element : maxValue
-            return maxValue
+        var max = T()
+        
+        self.select(predicate).forEach { (numeric) in
+            max = numeric > max ? numeric : max
         }
+        
+        return max
     }
     
     func min<T: Numeric>(predicate: (Element) -> T) -> T {
         let elementList = self.select(predicate)
-        let minValue:T = elementList.first != nil ? elementList.first! : T()
-        return elementList.reduce(minValue) { (var minValue, element) in
-            minValue = element < minValue ? element : minValue
-            return minValue
-        }
+        var min:T = elementList.first != nil ? elementList.first! : T()
+        
+        elementList.forEach({ (numeric) in
+            min = numeric < min ? numeric : min
+        })
+            
+        return min
     }
     
     func average<T: Numeric>(predicate: (Element) -> T) -> Double {
@@ -144,13 +149,14 @@ extension Array {
 extension Array where Element: Equatable {
 
     func distinct() -> [Element] {
-        let array = [Element]()
-        return self.reduce(array, combine: { (var array, element) in
-            if !array.contains(element) {
-                array.append(element)
+        var distincts = [Element]()
+        
+        self.forEach { (equatable) in
+            if !distincts.contains(equatable) {
+                distincts.append(equatable)
             }
-            return array
-        })
+        }
+        return distincts
     }
 }
 

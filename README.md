@@ -6,7 +6,9 @@
 
 ## Intro
 
-SWINQ is LINQ (Language Integrated Queries) for Swift 2.0. If you are unfamilar with [LINQ](https://msdn.microsoft.com/en-us/library/bb397926.aspx), it is a .NET Framework that provides powerful extension methods for querying/modifying data. These extension methods are not only handy to use, they also make your code much easier to read and consume by others. The article "[Collection Pipeline](http://martinfowler.com/articles/collection-pipeline/)", written by [Martin Fowler](http://martinfowler.com), provides additional information about integrated queries at a higher level while providing many concrete examples/differences in how you would use integrated queries in other languages.
+SWINQ is LINQ (Language Integrated Queries) for Swift 2.0. If you are unfamilar with [LINQ](https://msdn.microsoft.com/en-us/library/bb397926.aspx), it is a .NET Framework that provides powerful extension methods for querying and modifying data. These extension methods are not only handy to use, they also make your code much easier to read and consume by others.
+
+The article "[Collection Pipeline](http://martinfowler.com/articles/collection-pipeline/)", written by [Martin Fowler](http://martinfowler.com), provides additional information about integrated queries at a higher level while providing many concrete examples/differences in how you would use integrated queries in other languages.
 
 
 ## Installation
