@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
 
   s.name         = "SWINQ"
   s.version      = "0.0.1"
-  s.summary      = "The ability to use most LINQ operations on Swift 2.0."
+  s.summary      = "LINQ in Swift 2.0"
   s.description  = <<-DESC
                    Swift integrated queries on commonly used Swift data structures such as Arrays and Dictionaries.
 				   DESC
