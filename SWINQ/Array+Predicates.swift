@@ -1,17 +1,18 @@
 import Foundation
 
-extension Array {
+extension CollectionType {
     
-    func firstOrDefault(defaultValue: Element? = nil, predicate: (Element -> Bool)) -> Element? {
+    func firstOrDefault(defaultValue: Generator.Element? = nil, predicate: (Generator.Element -> Bool)) -> Generator.Element? {
         var result = defaultValue
         let filteredList = filter(predicate)
         if let first = filteredList.first {
             result = first
         }
+        
         return result
     }
     
-    func lastOrDefault(defaultValue: Element? = nil, predicate: (Element -> Bool)) -> Element? {
+    func lastOrDefault(defaultValue: Generator.Element? = nil, predicate: (Generator.Element -> Bool)) -> Generator.Element? {
         var result = defaultValue
         let filteredList = filter(predicate)
         if let last = filteredList.last {
@@ -20,17 +21,17 @@ extension Array {
         return result
     }
     
-    func all(predicate: (Element -> Bool)) -> [Element] {
+    func all(predicate: (Generator.Element -> Bool)) -> [Generator.Element] {
         return filter(predicate)
     }
     
-    func select<T>(predicate: (Element -> T)) -> [T] {
+    func select<T>(predicate: (Generator.Element -> T)) -> [T] {
         return self.map({ (element) in
             predicate(element)
         })
     }
     
-    func selectMany<T>(predicate: (Element -> [T])) -> [T] {
+    func selectMany<T>(predicate: (Generator.Element -> [T])) -> [T] {
         var array = [T]()
         
         self.forEach({ (element) in
@@ -40,7 +41,7 @@ extension Array {
         return array
     }
     
-    func any(predicate: (Element -> Bool)? = nil) -> Bool {
+    func any(predicate: (Generator.Element -> Bool)? = nil) -> Bool {
         var result: Bool
         
         if let predicate = predicate {
@@ -52,12 +53,11 @@ extension Array {
         return result
     }
     
-    func toArray() -> [Element] {
-        let copy = self
-        return copy
+    func toArray() -> [Generator.Element] {
+        return Array(self)
     }
     
-    func toDictionary<Key: Hashable, Value>(predicate: (Element)->(key: Key, value: Value)) -> [Key: Value] {
+    func toDictionary<Key: Hashable, Value>(predicate: (Generator.Element)->(key: Key, value: Value)) -> [Key: Value] {
         var dictionary = [Key: Value]()
         self.forEach { (element) in
             let keyPair = predicate(element)
@@ -67,8 +67,8 @@ extension Array {
         return dictionary
     }
     
-    func take(count: Int) -> [Element] {
-        var array = [Element]()
+    func take(count: Int) -> [Generator.Element] {
+        var array: [Generator.Element] = []
         
         for (index, element) in self.enumerate() {
             if (index >= count) { break }
@@ -78,8 +78,8 @@ extension Array {
         return array
     }
     
-    func takeWhile(predicate: (Element) -> Bool) -> [Element] {
-        var array = [Element]()
+    func takeWhile(predicate: (Generator.Element) -> Bool) -> [Generator.Element] {
+        var array: [Generator.Element] = []
         
         for element in self {
             if (!predicate(element)) { break }
@@ -89,34 +89,37 @@ extension Array {
         return array
     }
     
-    func skip(count: Int) -> [Element] {
-        var array = [Element]()
-        for i in count ..< self.count {
-            array.append(self[i])
-        }
-        return array
-    }
-    
-    func skipWhile(predicate: (Element) -> Bool) -> [Element] {
-        var array = [Element]()
+    func skip(count: Int) -> [Generator.Element] {
+        var array: [Generator.Element] = []
+        var i = 0
         
-        var start = 0
-        while !predicate(self[start]) {
-            start += 1
-        }
-        
-        for i in start ..< self.count {
-            array.append(self[i])
+        for element in self {
+            if i < count {
+                i += 1
+                continue
+            }
+            array.append(element)
         }
         
         return array
     }
     
-    func count(predicate: (Element) -> Bool) -> Int {
+    func skipWhile(predicate: (Generator.Element) -> Bool) -> [Generator.Element] {
+        var array: [Generator.Element] = []
+        guard let startIndex = self.indexOf(predicate) else { return array }
+    
+        for i in startIndex ..< self.endIndex {
+            array.append(self[i])
+        }
+
+        return array
+    }
+    
+    func count(predicate: (Generator.Element) -> Bool) -> Int {
         return self.all(predicate).count
     }
     
-    func max<T: Numeric>(predicate: (Element) -> T) -> T {
+    func max<T: Numeric>(predicate: (Generator.Element) -> T) -> T {
         var max = T()
         
         self.select(predicate).forEach { (numeric) in
@@ -126,7 +129,7 @@ extension Array {
         return max
     }
     
-    func min<T: Numeric>(predicate: (Element) -> T) -> T {
+    func min<T: Numeric>(predicate: (Generator.Element) -> T) -> T {
         let elementList = self.select(predicate)
         var min:T = elementList.first != nil ? elementList.first! : T()
         
@@ -137,7 +140,7 @@ extension Array {
         return min
     }
     
-    func average<T: Numeric>(predicate: (Element) -> T) -> Double {
+    func average<T: Numeric>(predicate: (Generator.Element) -> T) -> Double {
         let elementList = self.select(predicate)
         if elementList.isEmpty { return Double() }
         let numerator:T = elementList.sum()
@@ -146,10 +149,10 @@ extension Array {
     }
 }
 
-extension Array where Element: Equatable {
+extension CollectionType where Generator.Element: Equatable {
 
-    func distinct() -> [Element] {
-        var distincts = [Element]()
+    func distinct() -> [Generator.Element] {
+        var distincts: [Generator.Element] = []
         
         self.forEach { (equatable) in
             if !distincts.contains(equatable) {
@@ -160,7 +163,7 @@ extension Array where Element: Equatable {
     }
 }
 
-extension Array where Element: Numeric {
+extension CollectionType where Generator.Element: Numeric {
     
     func sum<T: Numeric>() -> T {
         let total = T()
@@ -171,8 +174,8 @@ extension Array where Element: Numeric {
     
     func average() -> Double {
         if self.isEmpty { return Double() }
-        let numerator: Element = self.sum()
-        let denominator = self.count
+        let numerator: Generator.Element = self.sum()
+        let denominator = Int(self.count.toIntMax())
         return numerator / denominator
     }
 }

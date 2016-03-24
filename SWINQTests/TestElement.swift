@@ -1,12 +1,16 @@
 import Foundation
 
-class TestElement: Equatable {
+class TestElement: Equatable, Hashable {
     
     var int: Int = 0
     var float: Float = 0.0
     var double: Double = 0.0
     var text: String = ""
     var array: [String] = []
+    
+    var hashValue: Int {
+        return int.hashValue ^ float.hashValue ^ double.hashValue ^ text.hashValue ^ array.count
+    }
     
     convenience init(text: String) {
         self.init()

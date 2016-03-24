@@ -16,19 +16,35 @@ protocol Numeric: Addable, Multiplicable, Comparable {
     init()
 }
 
+
+// MARK: Int extensions
 extension Int: Numeric {}
 
 func /(lhs: Int, rhs: Int) -> Double {
     return Double(lhs) / Double(rhs)
 }
 
-extension Float: Numeric {}
+
+// MARK: Float extensions
+extension Float: Numeric { }
 
 func /(lhs: Float, rhs: Int) -> Double {
     return Double(lhs) / Double(rhs)
 }
 
-extension Double: Numeric {}
+
+// MARK: Double extension
+protocol Precision {
+    func roundTo(decimalPlaces: Int) -> Self
+}
+
+extension Double: Numeric, Precision {
+    
+    func roundTo(decimalPlaces: Int) -> Double {
+        let divisor = pow(10.0, Double(decimalPlaces))
+        return round(self * divisor) / divisor
+    }
+}
 
 func /(lhs: Double, rhs: Int) -> Double {
     return lhs / Double(rhs)

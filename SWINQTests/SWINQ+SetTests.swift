@@ -2,7 +2,7 @@
 import XCTest
 @testable import SWINQ
 
-class ArrayPredicatesTests: XCTestCase {
+class SWINQSetTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -15,10 +15,10 @@ class ArrayPredicatesTests: XCTestCase {
     func test_firstOrDefault_String() {
         // assemble
         let expected = "Wubba lubba dub dub"
-        let array = ["random", expected, "random"]
+        let set: Set = ["random", expected, "Grass..tastes bad"]
         
         // act
-        let actual = array.firstOrDefault{ (x) in x == "Wubba lubba dub dub" }
+        let actual = set.firstOrDefault{ (x) in x == "Wubba lubba dub dub" }
         
         // assert
         XCTAssertNotNil(actual)
@@ -27,7 +27,7 @@ class ArrayPredicatesTests: XCTestCase {
     
     func test_firstOrDefault_Multiple() {
         // assemble
-        let array = [
+        let set: Set = [
             TestElement(int: 1, text: "Wubba lubba dub dub"),
             TestElement(int: 2, text: "Wubba lubba dub dub"),
             TestElement(int: 3, text: "Wubba lubba dub dub"),
@@ -35,7 +35,7 @@ class ArrayPredicatesTests: XCTestCase {
         ]
         
         // act
-        let actual = array.firstOrDefault{ (ti) in ti.text == "Wubba lubba dub dub" }
+        let actual = set.firstOrDefault{ (te) in te.int == 1 && te.text == "Wubba lubba dub dub" }
         
         // assert
         XCTAssertNotNil(actual)
@@ -44,7 +44,7 @@ class ArrayPredicatesTests: XCTestCase {
     
     func test_firstOrDefault_Default() {
         // assemble
-        let array = [
+        let set: Set = [
             TestElement(int: 1, text: "Wubba lubba dub dub"),
             TestElement(int: 2, text: "Wubba lubba dub dub"),
             TestElement(int: 3, text: "Wubba lubba dub dub"),
@@ -54,7 +54,7 @@ class ArrayPredicatesTests: XCTestCase {
         let defaultValue = TestElement(text: "Default value")
         
         // act
-        let actual = array.firstOrDefault(defaultValue){ (ti) in ti.text == "Nothing" }
+        let actual = set.firstOrDefault(defaultValue){ (ti) in ti.text == "Nothing" }
         
         // assert
         XCTAssertNotNil(actual)
@@ -64,10 +64,10 @@ class ArrayPredicatesTests: XCTestCase {
     func test_lastOrDefault_String() {
         // assemble
         let expected = "Wubba lubba dub dub"
-        let array = ["random", expected, "random"]
+        let set = ["random", expected, "random"]
         
         // act
-        let actual = array.lastOrDefault{ (x) in x == "Wubba lubba dub dub" }
+        let actual = set.lastOrDefault{ (x) in x == "Wubba lubba dub dub" }
         
         // assert
         XCTAssertNotNil(actual)
@@ -76,7 +76,7 @@ class ArrayPredicatesTests: XCTestCase {
     
     func test_lastOrDefault_Multiple() {
         // assemble
-        let array = [
+        let set: Set = [
             TestElement(int: 1, text: "Wubba lubba dub dub"),
             TestElement(int: 2, text: "Wubba lubba dub dub"),
             TestElement(int: 3, text: "Wubba lubba dub dub"),
@@ -84,7 +84,7 @@ class ArrayPredicatesTests: XCTestCase {
         ]
         
         // act
-        let actual = array.lastOrDefault{ (ti) in ti.text == "Wubba lubba dub dub" }
+        let actual = set.lastOrDefault{ (te) in te.int == 3 && te.text == "Wubba lubba dub dub" }
         
         // assert
         XCTAssertNotNil(actual)
@@ -93,7 +93,7 @@ class ArrayPredicatesTests: XCTestCase {
     
     func test_lastOrDefault_Default() {
         // assemble
-        let array = [
+        let set: Set = [
             TestElement(int: 1, text: "Wubba lubba dub dub"),
             TestElement(int: 2, text: "Wubba lubba dub dub"),
             TestElement(int: 3, text: "Wubba lubba dub dub"),
@@ -103,7 +103,7 @@ class ArrayPredicatesTests: XCTestCase {
         let defaultValue = TestElement(text: "Default value")
         
         // act
-        let actual = array.lastOrDefault(defaultValue){ (ti) in ti.text == "Nothing" }
+        let actual = set.lastOrDefault(defaultValue){ (ti) in ti.text == "Nothing" }
         
         // assert
         XCTAssertNotNil(actual)
@@ -112,7 +112,7 @@ class ArrayPredicatesTests: XCTestCase {
     
     func test_all() {
         // assemble
-        let array = [
+        let set: Set = [
             "Wubba lubba dub dub",
             "Wubba lubba dub dub",
             "Grass tastes bad",
@@ -120,10 +120,10 @@ class ArrayPredicatesTests: XCTestCase {
         ]
         
         // act
-        let actual = array.all { (x) in x == "Wubba lubba dub dub" }
+        let actual = set.all { (x) in x == "Wubba lubba dub dub" }
         
         // assert
-        XCTAssertEqual(2, actual.count)
+        XCTAssertEqual(1, actual.count)
     }
     
     func test_all_emptyList() {
@@ -144,7 +144,7 @@ class ArrayPredicatesTests: XCTestCase {
     
     func test_all_select() {
         // assemble
-        let array = [
+        let set: Set = [
             "Wubba lubba dub dub",
             "Wubba lubba dub dub",
             "Grass tastes bad",
@@ -152,20 +152,20 @@ class ArrayPredicatesTests: XCTestCase {
         ]
         
         // act
-        let actual = array
+        let actual = set
             .all{ (x) in x == "Wubba lubba dub dub" }
             .select{ (x) in return TestElement(text: x) }
         
         // assert
         XCTAssertNotNil(actual)
-        XCTAssertEqual(2, actual.count)
+        XCTAssertEqual(1, actual.count)
         XCTAssertEqual(TestElement(text: "Wubba lubba dub dub"), actual[0])
-        XCTAssertEqual(TestElement(text: "Wubba lubba dub dub"), actual[1])
+    
     }
     
     func test_all_select_anyChain() {
         // assemble
-        let array = [
+        let set: Set = [
             "Wubba lubba dub dub",
             "Wubba lubba dub dub",
             "Grass tastes bad",
@@ -173,7 +173,7 @@ class ArrayPredicatesTests: XCTestCase {
         ]
         
         // act
-        let actual = array
+        let actual = set
             .all{ (x) in x == "Wubba lubba dub dub" }
             .select{ (x) in return TestElement(text: x) }
             .any { (x) in x.text == "Wubba lubba dub dub" }
@@ -181,11 +181,11 @@ class ArrayPredicatesTests: XCTestCase {
         // assert
         XCTAssertTrue(actual)
     }
-
+    
     
     func test_all_select_anyChain_empty() {
         // assemble
-        let array = [
+        let set: Set = [
             "Wubba lubba dub dub",
             "Wubba lubba dub dub",
             "Grass tastes bad",
@@ -193,7 +193,7 @@ class ArrayPredicatesTests: XCTestCase {
         ]
         
         // act
-        let actual = array
+        let actual = set
             .all{ (x) in x == "Wubba lubba dub dub" }
             .select{ (x) in return TestElement(text: x) }
             .any { (x) in x.text == "Grass tastes bad" }
@@ -204,7 +204,7 @@ class ArrayPredicatesTests: XCTestCase {
     
     func test_select() {
         // assemble
-        let array = [
+        let set: Set = [
             "Wubba lubba dub dub",
             "Wubba lubba dub dub",
             "Grass tastes bad",
@@ -212,27 +212,25 @@ class ArrayPredicatesTests: XCTestCase {
         ]
         
         // act
-        let actual = array.select { (x) in return TestElement(text: x) }
+        let actual = set.select { (x) in return TestElement(text: x) }
         
         // assert
         XCTAssertNotNil(actual)
-        XCTAssertEqual(4, actual.count)
-        XCTAssertEqual(TestElement(text: "Wubba lubba dub dub"), actual[0])
-        XCTAssertEqual(TestElement(text: "Wubba lubba dub dub"), actual[1])
-        XCTAssertEqual(TestElement(text: "Grass tastes bad"), actual[2])
-        XCTAssertEqual(TestElement(text: "Grass tastes bad"), actual[3])
+        XCTAssertEqual(2, actual.count)
+        XCTAssertTrue(actual.contains(TestElement(text: "Wubba lubba dub dub")))
+        XCTAssertTrue(actual.contains(TestElement(text: "Grass tastes bad")))
     }
     
     func test_selectMany() {
         // assemble
-        let array = [
+        let set: Set = [
             TestElement(array: "one", "two", "three"),
             TestElement(array: "four", "five", "six"),
             TestElement(array: "seven", "eight", "nine")
         ]
         
         // act
-        let actual = array.selectMany { (x) in x.array }
+        let actual = set.selectMany { (x) in x.array }
         
         // assert
         XCTAssertNotNil(actual)
@@ -250,7 +248,7 @@ class ArrayPredicatesTests: XCTestCase {
     
     func test_any() {
         // assemble
-        let array = [
+        let set: Set = [
             "Wubba lubba dub dub",
             "Wubba lubba dub dub",
             "Grass tastes bad",
@@ -258,7 +256,7 @@ class ArrayPredicatesTests: XCTestCase {
         ]
         
         // act
-        let actual = array.any()
+        let actual = set.any()
         
         // assert
         XCTAssertTrue(actual)
@@ -266,10 +264,10 @@ class ArrayPredicatesTests: XCTestCase {
     
     func test_any_empty() {
         // assemble
-        let array: [AnyObject] = []
+        let set: Set<TestElement> = []
         
         // act
-        let actual = array.any()
+        let actual = set.any()
         
         // assert
         XCTAssertFalse(actual)
@@ -277,7 +275,7 @@ class ArrayPredicatesTests: XCTestCase {
     
     func test_any_predicate() {
         // assemble
-        let array = [
+        let set: Set = [
             "Wubba lubba dub dub",
             "Wubba lubba dub dub",
             "Grass tastes bad",
@@ -285,28 +283,28 @@ class ArrayPredicatesTests: XCTestCase {
         ]
         
         // act
-        let actual = array.any { (x) in x == "Wubba lubba dub dub" }
+        let actual = set.any { (x) in x == "Wubba lubba dub dub" }
         
         // assert
         XCTAssertTrue(actual)
     }
-
+    
     func test_any_predicate_empty() {
         // assemble
-        let array = [
+        let set: Set = [
             "Wubba lubba dub dub",
             "Wubba lubba dub dub"
         ]
         
         // act
-        let actual = array.any { (x) in x == "Grass tastes bad" }
+        let actual = set.any { (x) in x == "Grass tastes bad" }
         
         // assert
         XCTAssertFalse(actual)
     }
-
+    
     func test_toArray() {
-        let original = [
+        let original: Set = [
             "Wubba lubba dub dub",
             "Wubba lubba dub dub"
         ]
@@ -316,9 +314,8 @@ class ArrayPredicatesTests: XCTestCase {
         copy.append("Grass tastes bad")
         
         // assert
-        XCTAssertNotEqual(original, copy)
-        XCTAssertEqual(3, copy.count)
-        XCTAssertEqual(2, original.count)
+        XCTAssertEqual(2, copy.count)
+        XCTAssertEqual(1, original.count)
     }
     
     func test_toDictionary() {
@@ -328,10 +325,10 @@ class ArrayPredicatesTests: XCTestCase {
         let thirdTestElement = TestElement(int: 3, text: "Wubba lubba dub dub")
         let fourthTestElement = TestElement(int: 4, text: "Grass tastes bad")
         
-        let array = [firstTestElement, secondTestElement, thirdTestElement, fourthTestElement]
+        let set: Set = [firstTestElement, secondTestElement, thirdTestElement, fourthTestElement]
         
         // act
-        let dictionary = array.toDictionary { (ti) in
+        let dictionary = set.toDictionary { (ti) in
             return (key: ti.int, value: ti)
         }
         
@@ -351,179 +348,178 @@ class ArrayPredicatesTests: XCTestCase {
         let thirdTestElement = TestElement(int: 3, text: "Wubba lubba dub dub")
         let fourthTestElement = TestElement(int: 4, text: "Grass tastes bad")
         
-        let array = [firstTestElement, secondTestElement, thirdTestElement, fourthTestElement]
+        let set: Set = [firstTestElement, secondTestElement, thirdTestElement, fourthTestElement]
         
         // act
-        let actual = array.take(2)
+        let actual = set.take(2)
         
         // assert
         XCTAssertNotNil(actual)
         XCTAssertEqual(2, actual.count)
-        XCTAssertEqual(actual[0], firstTestElement)
-        XCTAssertEqual(actual[1], secondTestElement)
     }
     
     func test_takeWhile() {
         // assemble
-        let array = [1, 2, 3, 4, 3, 2, 1]
+        let set: Set = [1, 2, 3, 4, 3, 2, 1]
         
         // act
-        let actual = array.takeWhile { (x) in x < 4 }
-        
-        // assert
-        XCTAssertNotNil(actual)
-        XCTAssertEqual(3, actual.count)
-        XCTAssertEqual(actual[0], 1)
-        XCTAssertEqual(actual[1], 2)
-        XCTAssertEqual(actual[2], 3)
-    }
+        let condition = { (x) in x < 4 }
+        let actual = set.takeWhile { (x) in condition(x) }
     
-    func test_takeWhile_ignorePredicateAfterFirstPass() {
-        // assemble
-        let array = [1, 2, 3, 4, 3, 6, 1]
-        
-        // act
-        let actual = array.takeWhile { (x) in x < 4 }
-        
         // assert
         XCTAssertNotNil(actual)
-        XCTAssertEqual(3, actual.count)
-        XCTAssertEqual(actual[0], 1)
-        XCTAssertEqual(actual[1], 2)
-        XCTAssertEqual(actual[2], 3)
+        
+        var expectedCount = 0
+        for val in set {
+            if condition(val) {
+                expectedCount += 1
+            } else {
+                break
+            }
+            
+        }
+        
+        XCTAssertEqual(expectedCount, actual.count)
     }
     
     func test_skip() {
         // assemble
-        let array = [1, 2, 3, 4, 3, 2, 1]
+        let set: Set = [1, 2, 3, 4, 3, 2, 1]
         
         // act
-        let actual = array.skip(3)
+        let actual = set.skip(3)
         
         // assert
         XCTAssertNotNil(actual)
-        XCTAssertEqual(4, actual.count)
-        XCTAssertEqual(actual[0], 4)
-        XCTAssertEqual(actual[1], 3)
-        XCTAssertEqual(actual[2], 2)
-        XCTAssertEqual(actual[3], 1)
+        XCTAssertEqual(1, actual.count)
     }
     
     func test_skipWhile() {
         // assemble
-        let array = [1, 2, 3, 4, 3, 2, 1]
+        let set: Set = [1, 2, 3, 4, 3, 2, 1]
         
         // act
-        let actual = array.skipWhile{ (x) in x > 3 }
+        let condition = { (x) in x > 3 }
+        let actual = set.skipWhile{ (x) in condition(x) }
         
         // assert
         XCTAssertNotNil(actual)
-        XCTAssertEqual(4, actual.count)
-        XCTAssertEqual(actual[0], 4)
-        XCTAssertEqual(actual[1], 3)
-        XCTAssertEqual(actual[2], 2)
-        XCTAssertEqual(actual[3], 1)
+        
+        var skippedCount = 0
+        for val in set {
+            if condition(val) { break }
+            skippedCount += 1
+        }
+        
+        let expectedCount = set.count - skippedCount
+        XCTAssertEqual(expectedCount, actual.count)
     }
     
     func test_skipWhile_ignorePredicateAfterFirstPass() {
         // assemble
-        let array = [1, 2, 3, 4, 5, 2, 7]
+        let set: Set = [1, 2, 3, 4, 5, 2, 7]
         
         // act
-        let actual = array.skipWhile{ (x) in x > 3 }
+        let condition = { (x) in x > 3 }
+        let actual = set.skipWhile{ (x) in condition(x) }
         
         // assert
         XCTAssertNotNil(actual)
-        XCTAssertEqual(4, actual.count)
-        XCTAssertEqual(actual[0], 4)
-        XCTAssertEqual(actual[1], 5)
-        XCTAssertEqual(actual[2], 2)
-        XCTAssertEqual(actual[3], 7)
+        
+        var skippedCount = 0
+        for val in set {
+            if condition(val) { break }
+            skippedCount += 1
+        }
+        
+        let expectedCount = set.count - skippedCount
+        
+        XCTAssertEqual(expectedCount, actual.count)
     }
     
     func test_distinct() {
         // assemble
-        let array = [1, 2, 1, 2, 1, 2, 7]
-
+        let set: Set = [1, 2, 1, 2, 1, 2, 7]
+        
         // act
-        let actual = array.distinct()
+        let actual = set.distinct()
         
         // assert
         XCTAssertNotNil(actual)
         XCTAssertEqual(3, actual.count)
-        XCTAssertEqual(actual[0], 1)
-        XCTAssertEqual(actual[1], 2)
-        XCTAssertEqual(actual[2], 7)
+        XCTAssertTrue(actual.contains(1))
+        XCTAssertTrue(actual.contains(2))
+        XCTAssertTrue(actual.contains(7))
     }
     
     func test_distinct_unordered() {
         // assemble
         let array = [7, 2, 1, 2, 1, 2, 7]
-
+        
         // act
         let actual = array.distinct()
         
         // assert
         XCTAssertNotNil(actual)
         XCTAssertEqual(3, actual.count)
-        XCTAssertEqual(actual[0], 7)
-        XCTAssertEqual(actual[1], 2)
-        XCTAssertEqual(actual[2], 1)
+        XCTAssertTrue(actual.contains(1))
+        XCTAssertTrue(actual.contains(2))
+        XCTAssertTrue(actual.contains(7))
     }
     
     func test_count_predicate() {
         // assemble
-        let array = [7, 2, 1, 2, 1, 2, 7]
+        let set: Set = [7, 2, 1, 2, 1, 2, 7]
         
         // act
-        let actual = array.count { $0 == 7 }
+        let actual = set.count { $0 == 7 }
         
         // assert
-        XCTAssertEqual(2, actual)
+        XCTAssertEqual(1, actual)
     }
     
     func test_sum() {
         // assemble
-        let array = [7, 2, 1, 2, 1, 2, 7]
+        let set: Set = [7, 2, 1, 2, 1, 2, 7]
         
         // act
-        let actual:Int = array.sum()
+        let actual:Int = set.sum()
         
         // assert
-        XCTAssertEqual(22, actual)
+        XCTAssertEqual(10, actual)
     }
     
     func test_sum_double() {
         // assemble
-        let array = [7.2, 2.3, 1.5, 2.5, 1.2, 2.3, 7.5]
+        let set: Set = [7.2, 2.3, 1.5, 2.5, 1.2, 2.3, 7.5]
         
         // act
-        let actual:Double = array.sum()
+        let actual:Double = set.sum()
         
         // assertmaxValue
-        XCTAssertEqual(24.5, actual)
+        XCTAssertEqual(22.2, actual)
     }
     
     func test_sum_negatives() {
         // assemble
-        let array = [7, -2, 1, 2, 1, 2, 7, -7]
+        let set: Set = [7, -2, 1, 2, 1, 2, 7, -7]
         
         // act
-        let actual:Int = array.sum()
+        let actual:Int = set.sum()
         
         // assert
-        XCTAssertEqual(11, actual)
+        XCTAssertEqual(1, actual)
     }
     
     func test_sum_double_negative() {
         // assemble
-        let array = [7.2, 2.3, 1.5, -1.5, 2.5, 1.2, 2.3, 7.5, -7.5]
+        let set: Set = [7.2, 2.3, 1.5, -1.5, 2.5, 1.2, 2.3, 7.5, -7.5]
         
         // act
-        let actual:Double = array.sum()
+        let actual:Double = set.sum()
         
-        // assertmaxValue
-        XCTAssertEqual(15.5, actual)
+        // assert
+        XCTAssertEqual(13.2, actual)
     }
     
     func test_max_predicate_int() {
@@ -533,10 +529,10 @@ class ArrayPredicatesTests: XCTestCase {
         let thirdTestElement = TestElement(int: 10, text: "Wubba lubba dub dub")
         let fourthTestElement = TestElement(int: 7, text: "Grass tastes bad")
         
-        let array = [firstTestElement, secondTestElement, thirdTestElement, fourthTestElement]
+        let set: Set = [firstTestElement, secondTestElement, thirdTestElement, fourthTestElement]
         
         // act
-        let actual = array.max { (x) in return x.int }
+        let actual = set.max { (x) in return x.int }
         
         // assert
         XCTAssertEqual(thirdTestElement.int, actual)
@@ -549,10 +545,10 @@ class ArrayPredicatesTests: XCTestCase {
         let thirdTestElement = TestElement(double: 10.1, text: "Wubba lubba dub dub")
         let fourthTestElement = TestElement(double: 8.7, text: "Grass tastes bad")
         
-        let array = [firstTestElement, secondTestElement, thirdTestElement, fourthTestElement]
+        let set: Set = [firstTestElement, secondTestElement, thirdTestElement, fourthTestElement]
         
         // act
-        let actual = array.max { (x) in return x.double }
+        let actual = set.max { (x) in return x.double }
         
         // assert
         XCTAssertEqual(secondTestElement.double, actual)
@@ -565,10 +561,10 @@ class ArrayPredicatesTests: XCTestCase {
         let thirdTestElement = TestElement(int: 10, text: "Wubba lubba dub dub")
         let fourthTestElement = TestElement(int: 10, text: "Grass tastes bad")
         
-        let array = [firstTestElement, secondTestElement, thirdTestElement, fourthTestElement]
+        let set: Set = [firstTestElement, secondTestElement, thirdTestElement, fourthTestElement]
         
         // act
-        let actual = array.max { (x) in return x.int }
+        let actual = set.max { (x) in return x.int }
         
         // assert
         XCTAssertEqual(10, actual)
@@ -581,10 +577,10 @@ class ArrayPredicatesTests: XCTestCase {
         let thirdTestElement = TestElement(double: 10.1, text: "Wubba lubba dub dub")
         let fourthTestElement = TestElement(double: 10.5, text: "Grass tastes bad")
         
-        let array = [firstTestElement, secondTestElement, thirdTestElement, fourthTestElement]
+        let set: Set = [firstTestElement, secondTestElement, thirdTestElement, fourthTestElement]
         
         // act
-        let actual = array.max { (x) in return x.double }
+        let actual = set.max { (x) in return x.double }
         
         // assert
         XCTAssertEqual(10.5, actual)
@@ -597,10 +593,10 @@ class ArrayPredicatesTests: XCTestCase {
         let thirdTestElement = TestElement(int: 1, text: "Wubba lubba dub dub")
         let fourthTestElement = TestElement(int: 7, text: "Grass tastes bad")
         
-        let array = [firstTestElement, secondTestElement, thirdTestElement, fourthTestElement]
+        let set: Set = [firstTestElement, secondTestElement, thirdTestElement, fourthTestElement]
         
         // act
-        let actual = array.min { (x) in return x.int }
+        let actual = set.min { (x) in return x.int }
         
         // assert
         XCTAssertEqual(thirdTestElement.int, actual)
@@ -613,10 +609,10 @@ class ArrayPredicatesTests: XCTestCase {
         let thirdTestElement = TestElement(double: 10.1, text: "Wubba lubba dub dub")
         let fourthTestElement = TestElement(double: 8.7, text: "Grass tastes bad")
         
-        let array = [firstTestElement, secondTestElement, thirdTestElement, fourthTestElement]
+        let set: Set = [firstTestElement, secondTestElement, thirdTestElement, fourthTestElement]
         
         // act
-        let actual = array.min { (x) in return x.double }
+        let actual = set.min { (x) in return x.double }
         
         // assert
         XCTAssertEqual(secondTestElement.double, actual)
@@ -629,10 +625,10 @@ class ArrayPredicatesTests: XCTestCase {
         let thirdTestElement = TestElement(int: 1, text: "Wubba lubba dub dub")
         let fourthTestElement = TestElement(int: 7, text: "Grass tastes bad")
         
-        let array = [firstTestElement, secondTestElement, thirdTestElement, fourthTestElement]
+        let set: Set = [firstTestElement, secondTestElement, thirdTestElement, fourthTestElement]
         
         // act
-        let actual = array.min { (x) in return x.int }
+        let actual = set.min { (x) in return x.int }
         
         // assert
         XCTAssertEqual(1, actual)
@@ -645,10 +641,10 @@ class ArrayPredicatesTests: XCTestCase {
         let thirdTestElement = TestElement(double: 10.1, text: "Wubba lubba dub dub")
         let fourthTestElement = TestElement(double: 1.0, text: "Grass tastes bad")
         
-        let array = [firstTestElement, secondTestElement, thirdTestElement, fourthTestElement]
+        let set: Set = [firstTestElement, secondTestElement, thirdTestElement, fourthTestElement]
         
         // act
-        let actual = array.min { (x) in return x.double }
+        let actual = set.min { (x) in return x.double }
         
         // assert
         XCTAssertEqual(1.0, actual)
@@ -661,10 +657,10 @@ class ArrayPredicatesTests: XCTestCase {
         let thirdTestElement = TestElement(int: -5, text: "Wubba lubba dub dub")
         let fourthTestElement = TestElement(int: 7, text: "Grass tastes bad")
         
-        let array = [firstTestElement, secondTestElement, thirdTestElement, fourthTestElement]
+        let set: Set = [firstTestElement, secondTestElement, thirdTestElement, fourthTestElement]
         
         // act
-        let actual = array.min { (x) in return x.int }
+        let actual = set.min { (x) in return x.int }
         
         // assert
         XCTAssertEqual(-5, actual)
@@ -677,10 +673,10 @@ class ArrayPredicatesTests: XCTestCase {
         let thirdTestElement = TestElement(double: 10.1, text: "Wubba lubba dub dub")
         let fourthTestElement = TestElement(double: -1.0, text: "Grass tastes bad")
         
-        let array = [firstTestElement, secondTestElement, thirdTestElement, fourthTestElement]
+        let set: Set = [firstTestElement, secondTestElement, thirdTestElement, fourthTestElement]
         
         // act
-        let actual = array.min { (x) in return x.double }
+        let actual = set.min { (x) in return x.double }
         
         // assert
         XCTAssertEqual(-1.0, actual)
@@ -688,10 +684,10 @@ class ArrayPredicatesTests: XCTestCase {
     
     func test_min_int_empty() {
         // assemble
-        let array: [TestElement] = []
+        let set: Set<TestElement> = []
         
         // act
-        let actual = array.min { (x) in return x.int }
+        let actual = set.min { (x) in return x.int }
         
         // assert
         XCTAssertEqual(0, actual)
@@ -699,10 +695,10 @@ class ArrayPredicatesTests: XCTestCase {
     
     func test_min_double_empty() {
         // assemble
-        let array: [TestElement] = []
+        let set: Set<TestElement> = []
         
         // act
-        let actual = array.min { (x) in return x.double }
+        let actual = set.min { (x) in return x.double }
         
         // assert
         XCTAssertEqual(0.0, actual)
@@ -715,24 +711,51 @@ class ArrayPredicatesTests: XCTestCase {
         let thirdTestElement = TestElement(double: 0.25, text: "Wubba lubba dub dub")
         let fourthTestElement = TestElement(double: 0.25, text: "Grass tastes bad")
         
-        let array = [firstTestElement, secondTestElement, thirdTestElement, fourthTestElement]
+        let set: Set = [firstTestElement, secondTestElement, thirdTestElement, fourthTestElement]
         
         // act
-        let actual = array.average { (x) in return x.double }
+        let actual = set.average { (x) in return x.double }
         
         // assert
         XCTAssertEqual(0.25, actual)
     }
     
-    func test_average_double() {
+    func test_average_predicate_double_differentValues() {
         // assemble
-        let array = [0.25, 0.25, 0.25, 0.25]
+        let firstTestElement = TestElement(double: 0.25, text: "Wubba lubba dub dub")
+        let secondTestElement = TestElement(double: 0.26, text: "Wubba lubba dub dub")
+        let thirdTestElement = TestElement(double: 0.27, text: "Wubba lubba dub dub")
+        let fourthTestElement = TestElement(double: 0.28, text: "Grass tastes bad")
+        
+        let set: Set = [firstTestElement, secondTestElement, thirdTestElement, fourthTestElement]
         
         // act
-        let actual = array.average()
+        let actual = set.average { (x) in return x.double }
+        
+        // assert
+        XCTAssertEqual(0.265, actual.roundTo(3))
+    }
+    
+    func test_average_double() {
+        // assemble
+        let set: Set = [0.25, 0.25, 0.25, 0.25]
+        
+        // act
+        let actual = set.average()
         
         // assert
         XCTAssertEqual(0.25, actual)
+    }
+    
+    func test_average_double_differentValues() {
+        // assemble
+        let set: Set = [0.25, 0.26, 0.27, 0.28]
+        
+        // act
+        let actual = set.average()
+        
+        // assert
+        XCTAssertEqual(0.265, actual)
     }
     
     func test_average_float() {
@@ -742,13 +765,29 @@ class ArrayPredicatesTests: XCTestCase {
         let thirdTestElement = TestElement(float: 0.25, text: "Wubba lubba dub dub")
         let fourthTestElement = TestElement(float: 0.25, text: "Grass tastes bad")
         
-        let array = [firstTestElement, secondTestElement, thirdTestElement, fourthTestElement]
+        let set: Set = [firstTestElement, secondTestElement, thirdTestElement, fourthTestElement]
         
         // act
-        let actual = array.average { (x) in return x.float }
+        let actual = set.average { (x) in return x.float }
         
         // assert
         XCTAssertEqual(0.25, actual)
+    }
+    
+    func test_average_float_differentVaues() {
+        // assemble
+        let firstTestElement = TestElement(float: 0.25, text: "Wubba lubba dub dub")
+        let secondTestElement = TestElement(float: 0.26, text: "Wubba lubba dub dub")
+        let thirdTestElement = TestElement(float: 0.27, text: "Wubba lubba dub dub")
+        let fourthTestElement = TestElement(float: 0.28, text: "Grass tastes bad")
+        
+        let set: Set = [firstTestElement, secondTestElement, thirdTestElement, fourthTestElement]
+        
+        // act
+        let actual = set.average { (x) in return x.float }
+        
+        // assert
+        XCTAssertEqual(0.265, actual.roundTo(3))
     }
     
     func test_average_predicate_int() {
@@ -758,48 +797,70 @@ class ArrayPredicatesTests: XCTestCase {
         let thirdTestElement = TestElement(int: 25, text: "Wubba lubba dub dub")
         let fourthTestElement = TestElement(int: 25, text: "Grass tastes bad")
         
-        let array = [firstTestElement, secondTestElement, thirdTestElement, fourthTestElement]
+        let set: Set = [firstTestElement, secondTestElement, thirdTestElement, fourthTestElement]
         
         // act
-        let actual = array.average { (x) in return x.int }
+        let actual = set.average { (x) in return x.int }
         
         // assert
         XCTAssertEqual(25, actual)
+    }
+    
+    func test_average_predicate_int_differentValues() {
+        // assemble
+        let firstTestElement = TestElement(int: 25, text: "Wubba lubba dub dub")
+        let secondTestElement = TestElement(int: 26, text: "Wubba lubba dub dub")
+        let thirdTestElement = TestElement(int: 27, text: "Wubba lubba dub dub")
+        let fourthTestElement = TestElement(int: 28, text: "Grass tastes bad")
+        
+        let set: Set = [firstTestElement, secondTestElement, thirdTestElement, fourthTestElement]
+        
+        // act
+        let actual = set.average { (x) in return x.int }
+        
+        // assert
+        XCTAssertEqual(26.5, actual)
     }
     
     func test_average_int() {
         // assemble
-        let array = [25, 25, 25, 25]
+        let set: Set = [25, 25, 25, 25]
         
         // act
-        let actual = array.average()
+        let actual = set.average()
         
         // assert
         XCTAssertEqual(25, actual)
     }
     
-    func test_average_int_averageDouble() {
+    func test_average_int_differentValues() {
         // assemble
-        let firstTestElement = TestElement(int: 25, text: "Wubba lubba dub dub")
-        let secondTestElement = TestElement(int: 25, text: "Wubba lubba dub dub")
-        let thirdTestElement = TestElement(int: 26, text: "Wubba lubba dub dub")
-        let fourthTestElement = TestElement(int: 26, text: "Grass tastes bad")
-        
-        let array = [firstTestElement, secondTestElement, thirdTestElement, fourthTestElement]
+        let set: Set = [25, 26, 27, 28]
         
         // act
-        let actual = array.average { (x) in return x.int }
+        let actual = set.average()
         
         // assert
-        XCTAssertEqual(25.5, actual)
+        XCTAssertEqual(26.5, actual)
     }
     
     func test_average_empty() {
         // assemble
-        let array = [TestElement]()
+        let set: Set<Int> = []
         
         // act
-        let actual = array.average { (x) in return x.double }
+        let actual = set.average()
+        
+        // assert
+        XCTAssertEqual(0.0, actual)
+    }
+    
+    func test_average_predicate_empty() {
+        // assemble
+        let set: Set<TestElement> = []
+        
+        // act
+        let actual = set.average { (x) in return x.double }
         
         // assert
         XCTAssertEqual(0.0, actual)
