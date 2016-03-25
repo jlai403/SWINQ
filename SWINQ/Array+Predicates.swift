@@ -147,6 +147,19 @@ extension CollectionType {
         let denominator = elementList.count
         return numerator / denominator
     }
+    
+    func ofType<T>(type: T.Type) -> [T] {
+        var result: [T] = []
+        for element in self {
+            if element is T {
+                result.append(element as! T)
+            }
+        }
+        return result
+//        return all({ (element) -> Bool in
+//            return element as? T != nil
+//        })
+    }
 }
 
 extension CollectionType where Generator.Element: Equatable {

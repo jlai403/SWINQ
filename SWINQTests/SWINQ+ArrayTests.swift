@@ -908,6 +908,46 @@ class SWINQArrayTests: XCTestCase {
         // assert
         XCTAssertEqual(0.0, actual)
     }
+    
+    func test_ofType() {
+        // assemble
+        let array = [0,1, "text"]
+        // act
+        let actual = array.ofType(Int)
+        
+        // assert
+        XCTAssertEqual(2, actual.count)
+        XCTAssertEqual(0, actual[0])
+        XCTAssertEqual(1, actual[1])
+    }
+    
+    func test_ofType_String() {
+        // assemble
+        let array = [0,1, "text"]
+        // act
+        let actual = array.ofType(String)
+        
+        // assert
+        XCTAssertEqual(1, actual.count)
+        XCTAssertEqual("text", actual[0])
+    }
+    
+    func test_ofType_Class() {
+        // assemble
+        var array: [AnyObject] = []
+        array.append(0)
+        array.append(1)
+        array.append(TestElement(text: "one"))
+        array.append(TestElement(text: "two"))
+        
+        // act
+        let actual = array.ofType(TestElement)
+        
+        // assert
+        XCTAssertEqual(2, actual.count)
+        XCTAssertEqual(TestElement(text: "one"), actual[0])
+        XCTAssertEqual(TestElement(text: "two"), actual[1])
+    }
 }
 
 

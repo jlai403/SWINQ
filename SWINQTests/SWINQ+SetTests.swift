@@ -865,6 +865,29 @@ class SWINQSetTests: XCTestCase {
         // assert
         XCTAssertEqual(0.0, actual)
     }
+    
+    func test_ofType() {
+        // assemble
+        let set: Set = [0, 1, "text"]
+        // act
+        let actual = set.ofType(Int)
+        
+        // assert
+        XCTAssertEqual(2, actual.count)
+        XCTAssertEqual(0, actual[0])
+        XCTAssertEqual(1, actual[1])
+    }
+    
+    func test_ofType_String() {
+        // assemble
+        let set: Set = [0, 1, "text"]
+        // act
+        let actual = set.ofType(String)
+        
+        // assert
+        XCTAssertEqual(1, actual.count)
+        XCTAssertEqual("text", actual[0])
+    }
 }
 
 
