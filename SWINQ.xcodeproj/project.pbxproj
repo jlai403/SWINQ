@@ -12,8 +12,8 @@
 		6C3A54BA1C9A745F001284BB /* SWINQ+ArrayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C676B8A1C5BB2FB00F0C0A9 /* SWINQ+ArrayTests.swift */; };
 		6C3A54BB1C9A7461001284BB /* ArrayConvenienceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C676B9B1C5BB9A800F0C0A9 /* ArrayConvenienceTest.swift */; };
 		6C3A54BC1C9A7464001284BB /* TestElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C676B971C5BB66A00F0C0A9 /* TestElement.swift */; };
-		6C676B961C5BB45300F0C0A9 /* Array+Predicates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C676B951C5BB45300F0C0A9 /* Array+Predicates.swift */; };
 		6C676B9A1C5BB95000F0C0A9 /* Array+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C676B991C5BB95000F0C0A9 /* Array+Convenience.swift */; };
+		6C82DE1A1CAA3C7700488924 /* CollectionType+SWINQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C82DE191CAA3C7700488924 /* CollectionType+SWINQ.swift */; };
 		6CAF9B811CA37E45000C2763 /* SWINQ+SetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CAF9B801CA37E45000C2763 /* SWINQ+SetTests.swift */; };
 		6E734BF51C9A1D67007F644F /* Numeric+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E734BF41C9A1D67007F644F /* Numeric+Convenience.swift */; };
 /* End PBXBuildFile section */
@@ -35,10 +35,10 @@
 		6C676B801C5BB2FA00F0C0A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6C676B8A1C5BB2FB00F0C0A9 /* SWINQ+ArrayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SWINQ+ArrayTests.swift"; sourceTree = "<group>"; };
 		6C676B8C1C5BB2FB00F0C0A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6C676B951C5BB45300F0C0A9 /* Array+Predicates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Predicates.swift"; sourceTree = "<group>"; };
 		6C676B971C5BB66A00F0C0A9 /* TestElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestElement.swift; sourceTree = "<group>"; };
 		6C676B991C5BB95000F0C0A9 /* Array+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Convenience.swift"; sourceTree = "<group>"; };
 		6C676B9B1C5BB9A800F0C0A9 /* ArrayConvenienceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayConvenienceTest.swift; sourceTree = "<group>"; };
+		6C82DE191CAA3C7700488924 /* CollectionType+SWINQ.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CollectionType+SWINQ.swift"; sourceTree = "<group>"; };
 		6CAF9B801CA37E45000C2763 /* SWINQ+SetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SWINQ+SetTests.swift"; sourceTree = "<group>"; };
 		6E734BF41C9A1D67007F644F /* Numeric+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Numeric+Convenience.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -85,7 +85,7 @@
 			children = (
 				6C676B801C5BB2FA00F0C0A9 /* Info.plist */,
 				6C676B991C5BB95000F0C0A9 /* Array+Convenience.swift */,
-				6C676B951C5BB45300F0C0A9 /* Array+Predicates.swift */,
+				6C82DE191CAA3C7700488924 /* CollectionType+SWINQ.swift */,
 				6E734BF41C9A1D67007F644F /* Numeric+Convenience.swift */,
 				6C3A54991C9A72C3001284BB /* SWINQ-Swift.h */,
 			);
@@ -224,7 +224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6C676B9A1C5BB95000F0C0A9 /* Array+Convenience.swift in Sources */,
-				6C676B961C5BB45300F0C0A9 /* Array+Predicates.swift in Sources */,
+				6C82DE1A1CAA3C7700488924 /* CollectionType+SWINQ.swift in Sources */,
 				6E734BF51C9A1D67007F644F /* Numeric+Convenience.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
