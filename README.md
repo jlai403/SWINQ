@@ -24,7 +24,7 @@ pod 'SWINQ'
 ```
 
 ### Manual
-If you do not use CocoaPods, you can always add SWINQ to you projects manually by downloading the latest [release](https://github.com/jlai403/SWINQ/releases).
+If you do not use CocoaPods, you can add SWINQ to you projects manually by downloading the latest [release](https://github.com/jlai403/SWINQ/releases).
 
 ## Usage
 Coming soon...
