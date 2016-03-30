@@ -27,4 +27,22 @@ pod 'SWINQ'
 If you do not use CocoaPods, you can add SWINQ to you projects manually by downloading the latest [release](https://github.com/jlai403/SWINQ/releases).
 
 ## Usage
-Coming soon...
+
+##### `firstOrDefault` - returns the first element found in sequence given a predicate, or the default value if no elements found
+
+```swift
+[1,2,3,4].firstOrDefault{ (x) in x == 3 } // outputs 3
+[1,2,3,4].firstOrDefault{ (x) in x%2 == 0 } // outputs 2
+[1,2,3,4].firstOrDefault(0) { (x) in x == 4} //outputs 0
+```
+
+##### `lastOrDefault` - returns the last element found in sequence given a predicate, or the default value if no elements found
+
+```swift
+[1,2,3,4].lastOrDefault{ (x) in x == 3 } // outputs 3
+[1,2,3,4].lastOrDefault{ (x) in x%2 == 0 } // outputs 4
+[1,2,3,4].lastOrDefault(0) { (x) in x == 5} //outputs 0
+```
+
+
+More coming soon...
