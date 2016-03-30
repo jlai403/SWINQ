@@ -1,6 +1,6 @@
 import Foundation
 
-extension CollectionType {
+public extension CollectionType {
     
     func firstOrDefault(defaultValue: Generator.Element? = nil, predicate: (Generator.Element -> Bool)) -> Generator.Element? {
         var result = defaultValue
@@ -156,9 +156,6 @@ extension CollectionType {
             }
         }
         return result
-//        return all({ (element) -> Bool in
-//            return element as? T != nil
-//        })
     }
 }
 

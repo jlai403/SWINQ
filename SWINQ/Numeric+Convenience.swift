@@ -1,18 +1,18 @@
 import Foundation
 
-protocol Addable {
+public protocol Addable {
     func +(lhs: Self, rhs: Self) -> Self
     func -(lhs: Self, rhs: Self) -> Self
 }
 
-protocol Multiplicable {
+public protocol Multiplicable {
     func *(lhs: Self, rhs: Self) -> Self
     func /(lhs: Self, rhs: Self) -> Self
     // Override for averages
     func /(lhs: Self, rhs: Int) -> Double
 }
 
-protocol Numeric: Addable, Multiplicable, Comparable {
+public protocol Numeric: Addable, Multiplicable, Comparable {
     init()
 }
 
@@ -20,7 +20,7 @@ protocol Numeric: Addable, Multiplicable, Comparable {
 // MARK: Int extensions
 extension Int: Numeric {}
 
-func /(lhs: Int, rhs: Int) -> Double {
+public func /(lhs: Int, rhs: Int) -> Double {
     return Double(lhs) / Double(rhs)
 }
 
@@ -28,7 +28,7 @@ func /(lhs: Int, rhs: Int) -> Double {
 // MARK: Float extensions
 extension Float: Numeric { }
 
-func /(lhs: Float, rhs: Int) -> Double {
+public func /(lhs: Float, rhs: Int) -> Double {
     return Double(lhs) / Double(rhs)
 }
 
@@ -46,6 +46,6 @@ extension Double: Numeric, Precision {
     }
 }
 
-func /(lhs: Double, rhs: Int) -> Double {
+public func /(lhs: Double, rhs: Int) -> Double {
     return lhs / Double(rhs)
 }

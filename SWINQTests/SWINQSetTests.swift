@@ -35,11 +35,12 @@ class SWINQSetTests: XCTestCase {
         ]
         
         // act
-        let actual = set.firstOrDefault{ (te) in te.int == 1 && te.text == "Wubba lubba dub dub" }
+        let actual = set.firstOrDefault{ (te) in te.text == "Wubba lubba dub dub" }
         
         // assert
         XCTAssertNotNil(actual)
-        XCTAssertEqual(TestElement(int: 1, text: "Wubba lubba dub dub"), actual!)
+        XCTAssertEqual("Wubba lubba dub dub", actual!.text)
+        XCTAssertTrue([1,2,3].contains(actual!.int))
     }
     
     func test_firstOrDefault_Default() {
@@ -84,11 +85,12 @@ class SWINQSetTests: XCTestCase {
         ]
         
         // act
-        let actual = set.lastOrDefault{ (te) in te.int == 3 && te.text == "Wubba lubba dub dub" }
+        let actual = set.lastOrDefault{ (te) in te.text == "Wubba lubba dub dub" }
         
         // assert
         XCTAssertNotNil(actual)
-        XCTAssertEqual(TestElement(int: 3, text: "Wubba lubba dub dub"), actual)
+        XCTAssertEqual("Wubba lubba dub dub", actual!.text)
+        XCTAssertTrue([1,2,3].contains(actual!.int))
     }
     
     func test_lastOrDefault_Default() {
