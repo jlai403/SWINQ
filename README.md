@@ -44,5 +44,95 @@ If you do not use CocoaPods, you can add SWINQ to you projects manually by downl
 [1,2,3,4].lastOrDefault(0) { (x) in x == 5} //outputs 0
 ```
 
+##### `all` - returns all elements found in sequence given a predicate
+
+```swift
+[1,2,3,4].all{ (x) in x == 3 } // outputs [3]
+[1,2,3,4].all{ (x) in x%2 == 0 } // outputs [2, 4]
+[1,2,3,4].all{ (x) in x == 5} //outputs []
+```
+
+##### `select` - transforms each element in sequence into a new form
+
+```swift
+[1,2,3,4].select{ (x) in "\(x)" } // outputs ["1", "2", "3", "4"]
+[1,2,3,4].select{ (x) in x * x } // outputs [1, 4, 9, 16]
+
+```
+
+##### `selectMany` - flattens collections
+
+```swift
+["hello", "world"].selectMany{(x) in Array(x.characters)} // outputs ["h","e","l","o","w","o","r","l","d"]
+
+```
+
+##### `any` - returns whether an element in sequence matches the given predicate
+
+```swift
+[1,2,3,4].any() // outputs true
+[1,2,3,4].any{ (x) in x == 3 } // outputs true
+[1,2,3,4].any{ (x) in x == 5 } // outputs false
+
+```
+
+##### `toArray` - creates a new array from the sequence
+
+```swift
+var original = [1,2,3,4]
+var copy = original.toArray()
+copy.append(5)
+
+print(original) // outputs [1, 2, 3, 4]
+print(copy) // outputs [1, 2, 3, 4, 5]
+
+```
+
+##### `toDictionary` - creates a new dictionary from the sequence
+
+```swift
+["hello","world"].toDictionary { (x) in
+    return (key: x.characters.count, value: x)
+}
+
+// outputs [5: "hello", 6: "world!"]
+
+```
+
+##### `take` - returns the *x* number of elements starting from the beginning of the sequence
+
+```swift
+[1,2,3,4].take(1) // outputs [1]
+[1,2,3,4].take(2) // outputs [1, 2]
+[1,2,3,4].take(3) // outputs [1, 2, 3]
+
+```
+
+##### `takeWhile` - returns elements from the sequence until the given predicate fails
+
+```swift
+[1,2,3,4].takeWhile{ (x) in x < 0 } // outputs []
+[1,2,3,4].takeWhile{ (x) in x < 3 } // outputs [1, 2]
+[1,2,3,4].takeWhile{ (x) in x < 5 } // outputs [1, 2, 3, 4]
+
+```
+
+##### `skip` - skips *x* number of elements and returns the remaining sequence
+
+```swift
+[1,2,3,4].skip(1) // outputs [2, 3, 4]
+[1,2,3,4].skip(2) // outputs [3, 4]
+[1,2,3,4].skip(3) // outputs [4]
+
+```
+
+##### `skipWhile` - continues to skip elements until an element matches the given predicate
+
+```swift
+[1,2,3,4].skipWhile{ (x) in x > 1 } // outputs [2, 3, 4]
+[1,2,3,4].skipWhile{ (x) in x > 3 } // outputs [4]
+[1,2,3,4].skipWhile{ (x) in x > 5 } // outputs []
+
+```
 
 More coming soon...
