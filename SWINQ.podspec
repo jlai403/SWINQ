@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = "8.0"
   s.osx.deployment_target = "10.9"
 
-  s.source       = { :git => "https://github.com/jlai403/SWINQ.git", :tag => "v0.0.2-alpha" }
+  s.source       = { :git => "https://github.com/jlai403/SWINQ.git", :tag => "v0.0.3-alpha" }
 
   s.source_files  = "SWINQ/**/*.{swift}"
   #s.exclude_files = "Classes/Exclude"
